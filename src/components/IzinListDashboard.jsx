@@ -55,8 +55,8 @@ const IzinList = () => {
     getIzin();
   }, []);
 
-  console.log(user?.uuid);
-  console.log(user?.status);
+  console.log(user && user?.uuid);
+  console.log(user && user?.status);
   console.log(izin[izin.length - 1]?.uuid);
   console.log(izin[izin.length - 1]?.status);
 
