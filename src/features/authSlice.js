@@ -40,7 +40,7 @@ export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
 
 //method untuk fungsi logout
 export const LogOut = createAsyncThunk("user/LogOut", async () => {
-  await axios.delete("https://sizin-server.herokuapp.com//LogOut");
+  await axios.delete("https://sizin-server.herokuapp.com/LogOut");
 });
 
 export const authSlice = createSlice({
