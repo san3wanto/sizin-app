@@ -17,13 +17,13 @@ const IzinList = () => {
   }, []);
 
   const getIzin = async () => {
-    const response = await axios.get("http://localhost:5000/izin");
+    const response = await axios.get("https://sizin-server.herokuapp.com/izin");
     setIzin(response.data);
   };
 
   // method hapus izin
   const deleteIzin = async (izinId) => {
-    await axios.delete(`http://localhost:5000/izin/${izinId}`);
+    await axios.delete(`https://sizin-server.herokuapp.com/izin/${izinId}`);
     getIzin();
   };
 

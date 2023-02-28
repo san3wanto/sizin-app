@@ -13,7 +13,7 @@ const FormEditIzin = () => {
   useEffect(() => {
     const getIzinById = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/izin/${id}`);
+        const response = await axios.get(`https://sizin-server.herokuapp.com/izin/${id}`);
         setKet(response.data.ket);
       } catch (error) {
         if (error.response) {
@@ -27,7 +27,7 @@ const FormEditIzin = () => {
   const updateIzin = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:5000/izin/${id}`, {
+      await axios.patch(`https://sizin-server.herokuapp.com/zin/${id}`, {
         ket: ket,
       });
       navigate("/izin");

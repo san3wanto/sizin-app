@@ -13,13 +13,13 @@ const UserList = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get("http://localhost:5000/users");
+    const response = await axios.get("https://sizin-server.herokuapp.com/users");
     setUsers(response.data);
   };
 
   // method hapus izin
   const deleteUser = async (userId) => {
-    await axios.delete(`http://localhost:5000/users/${userId}`);
+    await axios.delete(`https://sizin-server.herokuapp.com/users/${userId}`);
     getUsers();
   };
 

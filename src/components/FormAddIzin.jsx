@@ -14,7 +14,7 @@ const FormAddIzin = () => {
   const saveIzin = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/izin", {
+      await axios.post("https://sizin-server.herokuapp.com/izin", {
         ket: ket,
       });
       if (user && user.role === "admin") {
@@ -30,7 +30,7 @@ const FormAddIzin = () => {
   };
 
   const updateUserStatus = async (userId) => {
-    await axios.patch(`http://localhost:5000/users/${userId}/status`);
+    await axios.patch(`https://sizin-server.herokuapp.com/${userId}/status`);
   };
   return (
     <Container fluid>

@@ -19,12 +19,12 @@ const IzinList = () => {
   }
 
   const getIzin = async () => {
-    const response = await axios.get("http://localhost:5000/izin");
+    const response = await axios.get("https://sizin-server.herokuapp.com/izin");
     setIzin(response.data);
   };
 
   const getUsers = async () => {
-    const response = await axios.get("http://localhost:5000/users");
+    const response = await axios.get("https://sizin-server.herokuapp.com/users");
     setUsers(response.data);
   };
 
@@ -40,8 +40,8 @@ const IzinList = () => {
   //
 
   const doubleUp = async (userId, izinId) => {
-    await axios.patch(`http://localhost:5000/users/${userId}/status`);
-    await axios.patch(`http://localhost:5000/izin/${izinId}/finish`);
+    await axios.patch(`https://sizin-server.herokuapp.com/users/${userId}/status`);
+    await axios.patch(`https://sizin-server.herokuapp.com/izin/${izinId}/finish`);
     getUsers();
     getIzin();
     refreshPage();

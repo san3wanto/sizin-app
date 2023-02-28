@@ -25,7 +25,7 @@ const FormEditUser = () => {
   useEffect(() => {
     const getUserById = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/users/${id}`);
+        const response = await axios.get(`https://sizin-server.herokuapp.com/users/${id}`);
         setName(response.data.name);
         setEmail(response.data.email);
         setNip(response.data.nip);
@@ -45,7 +45,7 @@ const FormEditUser = () => {
 
   const updateUser = async () => {
     try {
-      await axios.patch(`http://localhost:5000/users/${id}`, {
+      await axios.patch(`https://sizin-server.herokuapp.com/users/${id}`, {
         name: name,
         username: username,
         email: email,
