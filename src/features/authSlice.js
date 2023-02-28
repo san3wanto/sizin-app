@@ -12,7 +12,7 @@ const initialState = {
 //request ke api
 export const LoginUser = createAsyncThunk("user/loginUser", async (user, thunkAPI) => {
   try {
-    const response = await axios.post("http://localhost:5000/login", {
+    const response = await axios.post("https://sizin-bps.herokuapp.com/login", {
       username: user.username,
       password: user.password,
     });
@@ -40,7 +40,7 @@ export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
 
 //method untuk fungsi logout
 export const LogOut = createAsyncThunk("user/LogOut", async () => {
-  await axios.delete("http://localhost:5000/LogOut");
+  await axios.delete("https://sizin-bps.herokuapp.com//LogOut");
 });
 
 export const authSlice = createSlice({
