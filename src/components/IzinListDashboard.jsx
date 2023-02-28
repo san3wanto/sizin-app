@@ -14,6 +14,14 @@ const IzinList = () => {
   const [users, setUsers] = useState([]);
   const [izin, setIzin] = useState([]);
 
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  useEffect(() => {
+    getIzin();
+  }, []);
+  
   function refreshPage() {
     window.location.reload(false);
   }
@@ -47,16 +55,8 @@ const IzinList = () => {
     refreshPage();
   };
 
-  useEffect(() => {
-    getUsers();
-  }, []);
-
-  useEffect(() => {
-    getIzin();
-  }, []);
-
-  console.log(user && user?.uuid);
-  console.log(user && user?.status);
+  console.log(user && user.uuid);
+  console.log(user && user.status);
   console.log(izin[izin.length - 1]?.uuid);
   console.log(izin[izin.length - 1]?.status);
 
@@ -67,7 +67,7 @@ const IzinList = () => {
         {user && user.role === "user" && (
           <div className="d-flex justify-content-center">
             {user && user.status === "Izin" ? (
-              <Button onClick={() => doubleUp(user?.uuid, izin[izin?.length - 1]?.uuid)} className="btn btn-primary" style={{ fontWeight: "700" }}>
+              <Button onClick={() => doubleUp(user && user.uuid, izin[izin?.length - 1]?.uuid)} className="btn btn-primary" style={{ fontWeight: "700" }}>
                 Selesaikan Izin
               </Button>
             ) : (

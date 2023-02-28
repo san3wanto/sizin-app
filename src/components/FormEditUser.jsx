@@ -55,14 +55,12 @@ const FormEditUser = () => {
         confPassword: confPassword,
         role: role,
       });
+      navigate("/users");
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
       }
     }
-    dispatch(LogOut());
-    dispatch(reset());
-    navigate("/");
   };
 
   const togglePassword = () => {
