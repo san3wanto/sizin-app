@@ -12,7 +12,7 @@ const initialState = {
 //request ke api
 export const LoginUser = createAsyncThunk("user/loginUser", async (user, thunkAPI) => {
   try {
-    const response = await axios.post("https://sizin-bps.herokuapp.com/login", {
+    const response = await axios.post("https://sizin.netlify.app/login", {
       username: user.username,
       password: user.password,
     });
@@ -28,7 +28,7 @@ export const LoginUser = createAsyncThunk("user/loginUser", async (user, thunkAP
 // method untuk fungsi getme
 export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
   try {
-    const response = await axios.get("https://sizin-server.herokuapp.com/me");
+    const response = await axios.get("https://sizin.netlify.app/me");
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -40,7 +40,7 @@ export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
 
 //method untuk fungsi logout
 export const LogOut = createAsyncThunk("user/LogOut", async () => {
-  await axios.delete("https://sizin-server.herokuapp.com/LogOut");
+  await axios.delete("https://sizin.netlify.app/LogOut");
 });
 
 export const authSlice = createSlice({
