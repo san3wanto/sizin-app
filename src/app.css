@@ -1,0 +1,40 @@
+@media (max-width: 500px) {
+  Table thead {
+    display: none;
+  }
+  Table,
+  Table tbody,
+  Table tr,
+  Table td {
+    display: block;
+    width: 100%;
+  }
+  Table tr {
+    margin-bottom: 15px;
+  }
+  Table td {
+    padding-left: 50%;
+    text-align: left;
+    position: relative;
+    font-size: 15px;
+    word-wrap: break-word;
+  }
+  Table td::before {
+    content: attr(datalabel) " | ";
+    position: relative;
+    left: 0;
+    width: 50%;
+    font-size: 15px;
+    font-weight: bold;
+    /* font-style: italic; */
+    text-align: left;
+  }
+  /* .act {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  } */
+  .act Button {
+    margin: 3px;
+  }
+}
