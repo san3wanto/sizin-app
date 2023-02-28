@@ -95,7 +95,6 @@ const FormEditUser = () => {
             <Form.Label>Unit Kerja</Form.Label>
             <Form.Select value={jab} onChange={(e) => setJab(e.target.value)}>
               <option>Pilih Unit Kerja Anda</option>
-              <option>Pilih Unit Kerja Anda</option>
               <option value="Kepala">Kepala</option>
               <option value="Sub Bagian Tata Usaha">Sub Bagian Tata Usaha</option>
               <option value="Seksi Statistik Sosial">Seksi Statistik Sosial</option>
