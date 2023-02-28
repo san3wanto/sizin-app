@@ -28,7 +28,7 @@ export const LoginUser = createAsyncThunk("user/loginUser", async (user, thunkAP
 // method untuk fungsi getme
 export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
   try {
-    const response = await axios.get("https://sizin-server.herokuapp.com//me");
+    const response = await axios.get("https://sizin-server.herokuapp.com/me");
     return response.data;
   } catch (error) {
     if (error.response) {
