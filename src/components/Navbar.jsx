@@ -11,6 +11,7 @@ const NavB = () => {
   const { user } = useSelector((state) => state.auth);
 
   const logout = () => {
+    localStorage.removeItem("userLog");
     dispatch(LogOut());
     dispatch(reset());
     navigate("/");
