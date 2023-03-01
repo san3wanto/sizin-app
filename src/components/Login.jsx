@@ -29,6 +29,8 @@ const Login = () => {
   useEffect(() => {
     if (user || isSuccess) {
       navigate("/dashboard");
+      console.log(user);
+      localStorage.setItem("userLog", user);
     }
     dispatch(reset());
   }, [user, isSuccess, dispatch, navigate]);
