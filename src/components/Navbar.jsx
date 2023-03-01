@@ -14,7 +14,7 @@ const NavB = () => {
     dispatch(LogOut());
     dispatch(reset());
     navigate("/");
-    localStorage.setItem("userLog", null);
+    sessionStorage.clear();
   };
 
   return (
