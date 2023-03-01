@@ -19,8 +19,8 @@ const Clock = () => {
 
   return (
     <Container className="d-flex flex-column align-items-center justify-content-center">
-      <Col style={{ fontSize: 50, fontWeight: 600 }} className="text-break">{`${dayjs().format("HH:mm:ss")}`}</Col>
-      <div>{`${dayjs().format("dddd, DD MMM YYYY")}`}</div>
+      <Col style={{ fontSize: 50, fontWeight: 600 }} className="text-break">{`${tick}`}</Col>
+      <div>{`${dayjs().format("dddd, DD MMMM YYYY")}`}</div>
     </Container>
   );
 };

@@ -28,7 +28,7 @@ const IzinList = () => {
       <div className="d-flex flex-column align-items-center mt-3">
         <h2>Riwayat Izin</h2>
       </div>
-      <hr></hr>
+      {/* <hr></hr>
       <div className="d-flex flex-column align-items-center mx-5 my-2">
         <Button size="sm">
           <Link to="/izin/add" className="d-flex flex-row align-items-center" style={{ textDecoration: "none", color: "white" }}>
@@ -36,7 +36,7 @@ const IzinList = () => {
             Tambahkan
           </Link>
         </Button>
-      </div>
+      </div> */}
       <hr></hr>
       <div className="mx-2">
         <Table responsive striped="column" bordered>
