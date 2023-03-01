@@ -30,7 +30,7 @@ const FormAddIzin = () => {
   };
 
   const updateUserStatus = async (userId) => {
-    await axios.patch(`https://sizin-server.herokuapp.com/${userId}/status`);
+    await axios.patch(`https://sizin-server.herokuapp.com/users/${userId}/status`);
   };
   return (
     <Container fluid>
