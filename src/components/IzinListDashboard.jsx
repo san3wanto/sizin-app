@@ -13,33 +13,14 @@ const IzinList = () => {
   const { user } = useSelector((state) => state.auth);
   const [users, setUsers] = useState([]);
   const [izin, setIzin] = useState([]);
-  const [tombol, setTombol] = useStae([]);
 
   useEffect(() => {
     getUsers();
   }, []);
 
   useEffect(() => {
-    setTombol(
-      user && user.status === "Izin" ? (
-        <Button onClick={() => doubleUp(user && user.uuid, izin[izin?.length - 1]?.uuid)} className="btn btn-primary" style={{ fontWeight: "700" }}>
-          Selesaikan Izin
-        </Button>
-      ) : (
-        <Link to="/izin/add" className="btn btn-primary" style={{ fontWeight: "700" }}>
-          Izin Sekarang
-        </Link>
-      )
-    );
-  }, []);
-
-  useEffect(() => {
     getIzin();
   }, []);
-
-  function refreshPage() {
-    window.location.reload(false);
-  }
 
   const getIzin = async () => {
     const response = await axios.get("https://sizin-server.herokuapp.com/izin");
@@ -67,19 +48,30 @@ const IzinList = () => {
     await axios.patch(`https://sizin-server.herokuapp.com/izin/${izinId}/finish`);
     getUsers();
     getIzin();
-    setTombol();
   };
 
-  console.log(user && user.uuid);
-  console.log(user && user.status);
-  console.log(izin[izin.length - 1]?.uuid);
-  console.log(izin[izin.length - 1]?.status);
+  // console.log(user && user.uuid);
+  // console.log(user && user.status);
+  // console.log(izin[izin.length - 1]?.uuid);
+  // console.log(izin[izin.length - 1]?.status);
 
   return (
     <Container>
       <div>
         <hr></hr>
-        {tombol}
+        {user && user.role === "user" && (
+          <div className="d-flex justify-content-center">
+            {user && user.status === "Izin" && izin && izin[izin?.length - 1]?.status === "Belum" ? (
+              <Button onClick={() => doubleUp(user && user.uuid, izin[izin?.length - 1]?.uuid)} className="btn btn-primary" style={{ fontWeight: "700" }}>
+                Selesaikan Izin
+              </Button>
+            ) : (
+              <Link to="/izin/add" className="btn btn-primary" style={{ fontWeight: "700" }}>
+                Izin Sekarang
+              </Link>
+            )}
+          </div>
+        )}
         <hr></hr>
       </div>
       <div className="d-flex flex-row justify-content-around flex-wrap">
