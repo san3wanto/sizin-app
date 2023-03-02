@@ -18,6 +18,7 @@ const IzinList = () => {
 
   const handleClose = (e) => {
     e.preventDefault();
+    setShow(false);
   };
   const handleShow = (e) => {
     e.preventDefault();
