@@ -16,12 +16,12 @@ const IzinList = () => {
 
   const [show, setShow] = useState(false);
 
-  const handleClose = (e) => {
-    e.preventDefault();
+  const handleClose = () => {
+    // e.preventDefault();
     setShow(false);
   };
-  const handleShow = (e) => {
-    e.preventDefault();
+  const handleShow = () => {
+    // e.preventDefault();
     setShow(true);
   };
 
