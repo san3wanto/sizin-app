@@ -12,14 +12,16 @@ dayjs.locale("id");
 const IzinList = () => {
   const [izin, setIzin] = useState([]);
   const [show, setShow] = useState(false);
+  const [id, setId] = useState([]);
 
   const handleClose = (e) => {
     e.preventDefault();
     setShow(false);
   };
-  const handleShow = (e) => {
+  const handleShow = (e, theId) => {
     e.preventDefault();
     setShow(true);
+    setId(theId);
   };
 
   useEffect(() => {
@@ -44,9 +46,9 @@ const IzinList = () => {
         <Modal.Header>
           <Modal.Title>Peringatan!!!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{`Apakah anda yakin ingin menghapus data ini ${izin && izin.uuid}?`}</Modal.Body>
+        <Modal.Body>{`Apakah anda yakin ingin menghapus data ini ${id}?`}</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={() => deleteIzin(izin && izin.uuid)}>
+          <Button variant="primary" onClick={() => deleteIzin(id)}>
             Ya
           </Button>
           <Button variant="danger" onClick={handleClose}>
@@ -104,7 +106,7 @@ const IzinList = () => {
                     </Link>
                   </Button>
                   {"   "}
-                  <Button variant="danger" size="sm" onClick={handleShow} className="m-1">
+                  <Button variant="danger" size="sm" onClick={handleShow(e, izin.uuid)} className="m-1">
                     Hapus
                   </Button>
                 </td>
