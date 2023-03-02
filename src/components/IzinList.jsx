@@ -41,12 +41,12 @@ const IzinList = () => {
   return (
     <Container fluid>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header show={show} onHide={handleClose} backdrop="static" keyboard={false} aria-labelledby="contained-modal-title-vcenter" centered>
           <Modal.Title>Peringatan!!!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{`Apakah anda yakin ingin menghapus data ini ${izin.uuid}?`}</Modal.Body>
+        <Modal.Body>{`Apakah anda yakin ingin menghapus data ini ${izin && izin.uuid}?`}</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={() => deleteIzin(izin.uuid)}>
+          <Button variant="primary" onClick={() => deleteIzin(izin && izin.uuid)}>
             Ya
           </Button>
           <Button variant="danger" onClick={handleClose}>

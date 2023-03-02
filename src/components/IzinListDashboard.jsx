@@ -79,7 +79,7 @@ const IzinList = () => {
   return (
     <Container>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header show={show} onHide={handleClose} backdrop="static" keyboard={false} aria-labelledby="contained-modal-title-vcenter" centered>
           <Modal.Title>Selesaikan Izin?</Modal.Title>
         </Modal.Header>
         <Modal.Body>{`${izin[izin?.length - 1]?.ket}`}</Modal.Body>
@@ -87,7 +87,7 @@ const IzinList = () => {
           <Button variant="primary" onClick={() => doubleUp(user && user.uuid, izin[izin?.length - 1]?.uuid)}>
             Selesaikan Izin
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="danger" onClick={handleClose}>
             Batal
           </Button>
         </Modal.Footer>
