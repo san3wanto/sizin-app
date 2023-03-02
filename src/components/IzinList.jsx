@@ -14,12 +14,12 @@ const IzinList = () => {
   const [show, setShow] = useState(false);
   const [id, setId] = useState([]);
 
-  const handleClose = (e) => {
-    e.preventDefault();
+  const handleClose = () => {
+    // e.preventDefault();
     setShow(false);
   };
-  const handleShow = (e, theId) => {
-    e.preventDefault();
+  const handleShow = (theId) => {
+    // e.preventDefault();
     setShow(true);
     setId(theId);
   };
