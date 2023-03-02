@@ -45,13 +45,13 @@ const FormEditUser = () => {
     try {
       await axios.patch(`https://sizin-server.herokuapp.com/users/${id}`, {
         name: name,
-        username: username,
         email: email,
         nip: nip,
         jab: jab,
         password: password,
         confPassword: confPassword,
         role: role,
+        username: username,
       });
       console.log(`ini dalam fungsi ${id}`);
       navigate("/users");
