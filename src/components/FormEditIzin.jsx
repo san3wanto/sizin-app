@@ -22,7 +22,6 @@ const FormEditIzin = () => {
       }
     };
     getIzinById();
-    console.log(id);
   }, [id]);
 
   const updateIzin = async (e) => {
