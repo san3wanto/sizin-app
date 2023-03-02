@@ -17,8 +17,6 @@ const FormEditUser = () => {
   const [msg, setMsg] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   const { id } = useParams();
-
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,7 +40,7 @@ const FormEditUser = () => {
     getUserById();
   }, [id]);
 
-  const updateUser = async () => {
+  const updateUser = async (e) => {
     e.preventDefault();
     try {
       await axios.patch(`https://sizin-server.herokuapp.com/users/${id}`, {
