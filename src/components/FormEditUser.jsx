@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { LogOut, reset } from "../features/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch } from "react-red ux";
 import { Container, Button, Card, Form, InputGroup } from "react-bootstrap";
 import "bootstrap";
 
@@ -44,6 +43,7 @@ const FormEditUser = () => {
   }, [id]);
 
   const updateUser = async () => {
+    e.preventDefault();
     try {
       await axios.patch(`https://sizin-server.herokuapp.com/users/${id}`, {
         name: name,
@@ -55,6 +55,7 @@ const FormEditUser = () => {
         confPassword: confPassword,
         role: role,
       });
+      console.log(`ini dalam fungsi ${id}`);
       navigate("/users");
     } catch (error) {
       if (error.response) {
@@ -66,6 +67,8 @@ const FormEditUser = () => {
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
+
+  console.log(id);
 
   return (
     <Container fluid className="d-flex flex-column align-items-center">
@@ -117,9 +120,9 @@ const FormEditUser = () => {
               <Form.Control size="md" type={passwordShown ? "text" : "password"} placeholder="******" value={confPassword} onChange={(e) => setConfPassword(e.target.value)} />
             </InputGroup>
           </Form.Group>
-          <InputGroup.Text className="d-flex flex-row justify-content-between align-items center">
+          <InputGroup.Text className="d-flex flex-row justify-content-between align-items center" onClick={togglePassword}>
             Lihat Password
-            <box-icon type="solid" name={passwordShown ? "show" : "hide"} size="md color" onClick={togglePassword}></box-icon>
+            <box-icon type="solid" name={passwordShown ? "show" : "hide"} size="md color"></box-icon>
           </InputGroup.Text>
           <hr></hr>
           <Form.Group className="mb-3" controlId="formBasicRole">
@@ -133,7 +136,7 @@ const FormEditUser = () => {
 
           {password === confPassword && password && confPassword !== "" ? (
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <Button variant="primary" type="button" className="d-flex w-100 justify-content-center mt-4">
+              <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center mt-4">
                 Simpan
               </Button>
               <p className="has-text-centered">Password Cocok</p>

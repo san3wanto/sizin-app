@@ -30,6 +30,7 @@ const FormEditIzin = () => {
       await axios.patch(`https://sizin-server.herokuapp.com/zin/${id}`, {
         ket: ket,
       });
+      console.log(`ini dalam fungsi ${id}`);
       navigate("/izin");
     } catch (error) {
       if (error.response) {
@@ -37,6 +38,8 @@ const FormEditIzin = () => {
       }
     }
   };
+
+  console.log(id);
   return (
     <Container fluid>
       <div className="d-flex flex-column mt-3 align-items-center mb-2">
