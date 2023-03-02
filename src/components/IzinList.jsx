@@ -40,8 +40,8 @@ const IzinList = () => {
 
   return (
     <Container fluid>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header show={show} onHide={handleClose} backdrop="static" keyboard={false} aria-labelledby="contained-modal-title-vcenter" centered>
+      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Header>
           <Modal.Title>Peringatan!!!</Modal.Title>
         </Modal.Header>
         <Modal.Body>{`Apakah anda yakin ingin menghapus data ini ${izin && izin.uuid}?`}</Modal.Body>

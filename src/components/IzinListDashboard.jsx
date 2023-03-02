@@ -78,8 +78,8 @@ const IzinList = () => {
   // console.log(izin[izin.length - 1]?.status);
   return (
     <Container>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header show={show} onHide={handleClose} backdrop="static" keyboard={false} aria-labelledby="contained-modal-title-vcenter" centered>
+      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Header>
           <Modal.Title>Selesaikan Izin?</Modal.Title>
         </Modal.Header>
         <Modal.Body>{`${izin[izin?.length - 1]?.ket}`}</Modal.Body>
