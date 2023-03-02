@@ -7,6 +7,16 @@ import "../app.css";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
+  const [show, setShow] = useState(false);
+  const [usr, setUsr] = useState(null);
+
+  const handleClose = () => {
+    setShow(false);
+  };
+  const handleShow = (id) => {
+    setUsr(id);
+    setShow(true);
+  };
 
   useEffect(() => {
     getUsers();
@@ -21,10 +31,25 @@ const UserList = () => {
   const deleteUser = async (userId) => {
     await axios.delete(`https://sizin-server.herokuapp.com/users/${userId}`);
     getUsers();
+    setShow(false);
   };
 
   return (
     <Container fluid>
+      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Header>
+          <Modal.Title>Peringatan!!!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Apakah anda yakin ingin menghapus data user?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={() => deleteUser(usr)}>
+            Ya
+          </Button>
+          <Button variant="danger" onClick={handleClose}>
+            Tidak
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <div className="d-flex flex-column align-items-center mt-3">
         <h2>Daftar User</h2>
       </div>
@@ -81,7 +106,7 @@ const UserList = () => {
                     </Link>
                   </Button>
                   {"   "}
-                  <Button variant="danger" size="sm" onClick={() => deleteUser(user.uuid)} className="m-1">
+                  <Button variant="danger" size="sm" onClick={() => handleShow(user.uuid)} className="m-1">
                     Hapus
                   </Button>
                 </td>

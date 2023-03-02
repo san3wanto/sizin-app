@@ -12,7 +12,7 @@ dayjs.locale("id");
 const IzinList = () => {
   const [izin, setIzin] = useState([]);
   const [show, setShow] = useState(false);
-  const [idzin, setIdzin] = useState(false);
+  const [idzin, setIdzin] = useState(null);
 
   const handleClose = () => {
     setShow(false);
@@ -44,7 +44,7 @@ const IzinList = () => {
         <Modal.Header>
           <Modal.Title>Peringatan!!!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{`Apakah anda yakin ingin menghapus data ini ${idzin}?`}</Modal.Body>
+        <Modal.Body>Apakah anda yakin ingin menghapus data izin?</Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={() => deleteIzin(idzin)}>
             Ya

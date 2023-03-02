@@ -12,7 +12,6 @@ dayjs.locale("id");
 
 const IzinList = () => {
   const [izin, setIzin] = useState([]);
-  // const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     getIzin();
