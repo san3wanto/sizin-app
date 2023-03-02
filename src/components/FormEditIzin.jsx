@@ -27,7 +27,7 @@ const FormEditIzin = () => {
   const updateIzin = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`https://sizin-server.herokuapp.com/zin/${id}`, {
+      await axios.patch(`https://sizin-server.herokuapp.com/izin/${id}`, {
         ket: ket,
       });
       navigate("/izin");

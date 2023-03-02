@@ -53,7 +53,6 @@ const FormEditUser = () => {
         role: role,
         username: username,
       });
-      console.log(`ini dalam fungsi ${id}`);
       navigate("/users");
     } catch (error) {
       if (error.response) {
@@ -65,8 +64,6 @@ const FormEditUser = () => {
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
-
-  console.log(id);
 
   return (
     <Container fluid className="d-flex flex-column align-items-center">
