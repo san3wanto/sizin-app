@@ -133,7 +133,7 @@ const FormEditUser = () => {
 
           {password === confPassword && password && confPassword !== "" ? (
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center mt-4">
+              <Button variant="primary" type="button" className="d-flex w-100 justify-content-center mt-4">
                 Simpan
               </Button>
               <p className="has-text-centered">Password Cocok</p>
@@ -141,7 +141,7 @@ const FormEditUser = () => {
             </div>
           ) : (
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center mt-4" disabled>
+              <Button variant="primary" type="button" className="d-flex w-100 justify-content-center mt-4" disabled>
                 Simpan
               </Button>
               <p className="has-text-centered">Password tidak cocok</p>
