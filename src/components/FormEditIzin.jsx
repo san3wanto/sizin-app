@@ -22,41 +22,22 @@ const FormEditIzin = () => {
       }
     };
     getIzinById();
+    console.log(id);
   }, [id]);
 
-  useEffect(() => {
-    const updateIzin = async (e) => {
-      e.preventDefault();
-      try {
-        await axios.patch(`https://sizin-server.herokuapp.com/zin/${id}`, {
-          ket: ket,
-        });
-        console.log(`ini dalam fungsi ${id}`);
-        navigate("/izin");
-      } catch (error) {
-        if (error.response) {
-          setMsg(error.response.data.msg);
-        }
+  const updateIzin = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.patch(`https://sizin-server.herokuapp.com/zin/${id}`, {
+        ket: ket,
+      });
+      navigate("/izin");
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
       }
-    };
-    updateIzin()
-  }, [id]);
-  
-
-  // const updateIzin = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.patch(`https://sizin-server.herokuapp.com/zin/${id}`, {
-  //       ket: ket,
-  //     });
-  //     console.log(`ini dalam fungsi ${id}`);
-  //     navigate("/izin");
-  //   } catch (error) {
-  //     if (error.response) {
-  //       setMsg(error.response.data.msg);
-  //     }
-  //   }
-  // };
+    }
+  };
 
   console.log(id);
   return (
