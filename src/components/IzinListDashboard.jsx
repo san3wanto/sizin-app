@@ -17,11 +17,9 @@ const IzinList = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
-    // e.preventDefault();
     setShow(false);
   };
   const handleShow = () => {
-    // e.preventDefault();
     setShow(true);
   };
 
