@@ -68,7 +68,10 @@ const FormEditUser = () => {
     setPasswordShown(!passwordShown);
   };
 
-  console.log(id);
+  console.log(`ini adalah ${id}`);
+  console.log(`ini adalah ${user}`);
+  console.log(`ini adalah ${user.uuid}`);
+  console.log(`ini adalah ${uuid}`);
 
   return (
     <Container fluid className="d-flex flex-column align-items-center">
