@@ -49,7 +49,7 @@ const FormEditIzin = () => {
           <FloatingLabel controlId="floatingTextarea" label="Keterangan Izin" className="mb-3 w-100">
             <Form.Control as="textarea" className="input" value={ket} onChange={(e) => setKet(e.target.value)} placeholder="keterangan izin" />
           </FloatingLabel>
-          <Button type="button" className="Button is-success w-100">
+          <Button type="submit" className="Button is-success w-100">
             Simpan
           </Button>
           <p className="has-text-centered">{msg}</p>
