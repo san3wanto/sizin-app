@@ -14,7 +14,6 @@ const NavB = () => {
     dispatch(LogOut());
     dispatch(reset());
     navigate("/");
-    sessionStorage.clear();
   };
 
   return (

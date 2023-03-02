@@ -30,7 +30,6 @@ const Login = () => {
     if (user || isSuccess) {
       navigate("/dashboard");
       console.log(user);
-      sessionStorage.setItem("log", user);
     }
     dispatch(reset());
   }, [user, isSuccess, dispatch, navigate]);
