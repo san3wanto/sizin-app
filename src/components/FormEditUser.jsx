@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch } from "react-red ux";
+import { useDispatch } from "react-redux";
 import { Container, Button, Card, Form, InputGroup } from "react-bootstrap";
 import "bootstrap";
 
