@@ -15,7 +15,7 @@ const Clock = () => {
     return () => clearInterval(interval);
   }, []);
 
-  console.log(tick);
+  // console.log(tick);
 
   return (
     <Container className="d-flex flex-column align-items-center justify-content-center">

@@ -40,7 +40,7 @@ const IzinList = () => {
   }
   const Tersedia = filterByStatus(users, "Tersedia", "user");
   const Izin = filterByStatus(users, "Izin", "user");
-  console.log(Izin.length);
+  // console.log(Izin.length);
   //
 
   const doubleUp = async (userId, izinId) => {
