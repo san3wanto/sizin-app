@@ -14,6 +14,16 @@ const IzinList = () => {
   const [users, setUsers] = useState([]);
   const [izin, setIzin] = useState([]);
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = (e) => {
+    e.preventDefault();
+  };
+  const handleShow = (e) => {
+    e.preventDefault();
+    setShow(true);
+  };
+
   useEffect(() => {
     getUsers();
   }, []);
@@ -26,12 +36,12 @@ const IzinList = () => {
     const response = await axios.get("https://sizin-server.herokuapp.com/izin");
     setIzin(response.data);
   };
- 
+
   // const getIzin = async () => {
   //   const response = await axios.get("https://sizin-server.herokuapp.com/izin");
   //   setIzin(response.data);
   // };
- 
+
   // const getIzin = async () => {
   //   const response = await axios.get("https://sizin-server.herokuapp.com/izin");
   //   setIzin(response.data);
@@ -58,21 +68,35 @@ const IzinList = () => {
     await axios.patch(`https://sizin-server.herokuapp.com/izin/${izinId}/finish`);
     getUsers();
     getIzin();
+    setShow(false);
   };
 
   // console.log(user && user.uuid);
   // console.log(user && user.status);
   // console.log(izin[izin.length - 1]?.uuid);
   // console.log(izin[izin.length - 1]?.status);
-
   return (
     <Container>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Selesaikan Izin?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{`${izin[izin?.length - 1]?.ket}`}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={() => doubleUp(user && user.uuid, izin[izin?.length - 1]?.uuid)}>
+            Selesaikan Izin
+          </Button>
+          <Link to="/izin/add" className="btn btn-danger" onClick={handleClose}>
+            Batal
+          </Link>
+        </Modal.Footer>
+      </Modal>
       <div>
         <hr></hr>
         {user && user.role === "user" && (
           <div className="d-flex justify-content-center">
             {user && user.status === "Izin" && izin && izin[izin?.length - 1]?.status === "Belum" ? (
-              <Button onClick={() => doubleUp(user && user.uuid, izin[izin?.length - 1]?.uuid)} className="btn btn-primary" style={{ fontWeight: "700" }}>
+              <Button onClick={handleShow} className="btn btn-primary" style={{ fontWeight: "700" }}>
                 Selesaikan Izin
               </Button>
             ) : (
