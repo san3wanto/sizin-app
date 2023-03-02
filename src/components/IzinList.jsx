@@ -106,7 +106,7 @@ const IzinList = () => {
                     </Link>
                   </Button>
                   {"   "}
-                  <Button variant="danger" size="sm" onClick={handleShow(e, izin.uuid)} className="m-1">
+                  <Button variant="danger" size="sm" onClick={handleShow(izin.uuid)} className="m-1">
                     Hapus
                   </Button>
                 </td>
