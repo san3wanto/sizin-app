@@ -11,6 +11,15 @@ dayjs.locale("id");
 
 const IzinList = () => {
   const [izin, setIzin] = useState([]);
+  const [show, setShow] = useState(false);
+
+  const handleClose = (e) => {
+    e.preventDefault();
+  };
+  const handleShow = (e) => {
+    e.preventDefault();
+    setShow(true);
+  };
 
   useEffect(() => {
     getIzin();
@@ -25,10 +34,25 @@ const IzinList = () => {
   const deleteIzin = async (izinId) => {
     await axios.delete(`https://sizin-server.herokuapp.com/izin/${izinId}`);
     getIzin();
+    setShow(false);
   };
 
   return (
     <Container fluid>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Peringatan!!!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Apakah anda yakin ingin menghapus data ini?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={() => deleteIzin(izin.uuid)}>
+            Ya
+          </Button>
+          <Link to="/izin/add" className="btn btn-danger" onClick={handleClose}>
+            Tidak
+          </Link>
+        </Modal.Footer>
+      </Modal>
       <div className="d-flex flex-column align-items-center mt-3">
         <h2>Daftar Izin</h2>
       </div>
@@ -79,7 +103,7 @@ const IzinList = () => {
                     </Link>
                   </Button>
                   {"   "}
-                  <Button variant="danger" size="sm" onClick={() => deleteIzin(izin.uuid)} className="m-1">
+                  <Button variant="danger" size="sm" onClick={handleShow} className="m-1">
                     Hapus
                   </Button>
                 </td>

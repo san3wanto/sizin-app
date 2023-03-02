@@ -6,10 +6,6 @@ import { Container, Table, Button } from "react-bootstrap";
 import "bootstrap";
 import "../app.css";
 
-const dayjs = require("dayjs");
-require("dayjs/locale/id");
-dayjs.locale("id");
-
 const IzinList = () => {
   const [izin, setIzin] = useState([]);
   // const { user } = useSelector((state) => state.auth);
