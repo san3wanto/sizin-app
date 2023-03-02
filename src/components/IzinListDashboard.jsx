@@ -86,9 +86,9 @@ const IzinList = () => {
           <Button variant="primary" onClick={() => doubleUp(user && user.uuid, izin[izin?.length - 1]?.uuid)}>
             Selesaikan Izin
           </Button>
-          <Link to="/izin/add" className="btn btn-danger" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClose}>
             Batal
-          </Link>
+          </Button>
         </Modal.Footer>
       </Modal>
       <div>

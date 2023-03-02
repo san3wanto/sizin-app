@@ -43,14 +43,14 @@ const IzinList = () => {
         <Modal.Header closeButton>
           <Modal.Title>Peringatan!!!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Apakah anda yakin ingin menghapus data ini?</Modal.Body>
+        <Modal.Body>{`Apakah anda yakin ingin menghapus data ini ${izin.uuid}?`}</Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={() => deleteIzin(izin.uuid)}>
             Ya
           </Button>
-          <Link to="/izin/add" className="btn btn-danger" onClick={handleClose}>
+          <Button variant="danger" onClick={handleClose}>
             Tidak
-          </Link>
+          </Button>
         </Modal.Footer>
       </Modal>
       <div className="d-flex flex-column align-items-center mt-3">
