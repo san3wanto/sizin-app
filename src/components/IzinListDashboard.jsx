@@ -15,6 +15,7 @@ const IzinList = () => {
   const [izin, setIzin] = useState([]);
 
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleClose = () => {
     setShow(false);
@@ -35,16 +36,6 @@ const IzinList = () => {
     const response = await axios.get("https://sizin-server.herokuapp.com/izin");
     setIzin(response.data);
   };
-
-  // const getIzin = async () => {
-  //   const response = await axios.get("https://sizin-server.herokuapp.com/izin");
-  //   setIzin(response.data);
-  // };
-
-  // const getIzin = async () => {
-  //   const response = await axios.get("https://sizin-server.herokuapp.com/izin");
-  //   setIzin(response.data);
-  // };
 
   const getUsers = async () => {
     const response = await axios.get("https://sizin-server.herokuapp.com/users");
@@ -70,7 +61,11 @@ const IzinList = () => {
     setShow(false);
   };
 
-  // console.log(user && user.uuid);
+  (user && izin !== null) || undefined ? setLoading(false) : setLoading(true);
+
+  console.log(`Ini adalah ${user}`);
+  console.log(`Ini adalah ${izin}`);
+  console.log(`Sedang loading adalah ${loading}`);
   // console.log(user && user.status);
   // console.log(izin[izin.length - 1]?.uuid);
   // console.log(izin[izin.length - 1]?.status);
