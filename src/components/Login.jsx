@@ -93,7 +93,7 @@ const Login = () => {
           </Nav>
         </Container>
       </Navbar>
-      <Container fluid className="vh-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: "grey" }}>
+      <Container>
         <Modal show={show} onHide={handleClose} backdrop="static" centered>
           <Modal.Header className="d-flex flex-row justify-content-center">
             <img className="fluid" src={logo} alt="bps logo" width="200px" />
@@ -156,15 +156,10 @@ const Login = () => {
             <hr></hr>
             {Tersedia.length !== 0 ? (
               <Table responsive striped="column">
-                <thead>
-                  <tr>
-                    <td>Nama</td>
-                  </tr>
-                </thead>
                 <tbody>
                   {Tersedia.map((user) => (
                     <tr key={user.uuid}>
-                      <td datalabale=" ">{user.name}</td>
+                      <td>{user.name}</td>
                     </tr>
                   ))}
                 </tbody>
