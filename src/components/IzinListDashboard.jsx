@@ -117,7 +117,7 @@ const IzinList = () => {
         <hr></hr>
       </div>
       <div className="d-flex flex-row justify-content-around flex-wrap">
-        <div className="card m-3 p-3" style={{ width: "30rem" }}>
+        <div className="card m-3 p-3" style={{ width: "10rem" }}>
           <div className="d-flex flex-row justify-content-between align-items-end">
             <h2>Sedang Di Kantor</h2>
             <h5>
@@ -147,7 +147,7 @@ const IzinList = () => {
           )}
         </div>
 
-        <div className="m-3 p-3 card" style={{ width: "30rem" }}>
+        <div className="m-3 p-3 card" style={{ width: "10rem" }}>
           <div className="d-flex flex-row justify-content-between align-items-end">
             <h2>Sedang Izin</h2>
             <h5>
