@@ -106,7 +106,7 @@ const Login = () => {
           </Form>
         </div>
       </Card>
-      {/* <div className="d-flex flex-row justify-content-around flex-wrap">
+      <div className="d-flex flex-row justify-content-around flex-wrap">
         <div className="card m-3 p-3" style={{ width: "30rem" }}>
           <div className="d-flex flex-row justify-content-between align-items-end">
             <h2>Sedang Di Kantor</h2>
@@ -166,7 +166,7 @@ const Login = () => {
             <Alert variant="info">Tidak Ada Izin Tercatat</Alert>
           )}
         </div>
-      </div> */}
+      </div>
     </Container>
   );
 };
