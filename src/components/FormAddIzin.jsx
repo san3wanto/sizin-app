@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Container, Button, Card, Form, FloatingLabel } from "react-bootstrap";
+import { Container, Button, Card, Form, FloatingLabel, Spinner } from "react-bootstrap";
 import "bootstrap";
 
 const FormAddIzin = () => {
