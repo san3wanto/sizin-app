@@ -13,7 +13,6 @@ const IzinList = () => {
   const { user } = useSelector((state) => state.auth);
   const [users, setUsers] = useState([]);
   const [izin, setIzin] = useState([]);
-
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -40,6 +39,7 @@ const IzinList = () => {
   const getUsers = async () => {
     const response = await axios.get("https://sizin-server.herokuapp.com/users");
     setUsers(response.data);
+    setLoading(false);
   };
 
   //filter kehadiran
@@ -59,9 +59,8 @@ const IzinList = () => {
     getUsers();
     getIzin();
     setShow(false);
+    setLoading(false);
   };
-
-  user || izin === (null || undefined || "") ? setLoading(false) : setLoading(true);
 
   console.log(`Ini adalah ${user}`);
   console.log(`Ini adalah ${izin}`);
