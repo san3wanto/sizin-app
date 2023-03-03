@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LoginUser, reset } from "../features/authSlice";
-import { Button, Container, Form, InputGroup, Card, Spinner } from "react-bootstrap";
+import { Button, Container, Form, InputGroup, Card, Spinner, Table, Button, Badge, Alert } from "react-bootstrap";
 import logo from "../bps.png";
 
 const Login = () => {
@@ -12,10 +12,30 @@ const Login = () => {
   const navigate = useNavigate();
   const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.auth);
   const [passwordShown, setPasswordShown] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState([]);
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
+
+  useEffect(() => {
+    getUsersPub();
+  }, []);
+
+  const getUsersPub = async () => {
+    const response = await axios.get("https://sizin-server.herokuapp.com/users/pub");
+    setUsers(response.data);
+    setLoading(false);
+  };
+
+  function filterByStatus(user, status, role) {
+    return user.filter(function (user) {
+      return user.status.includes(status) && user.role.includes(role);
+    });
+  }
+  const Tersedia = filterByStatus(users, "Tersedia", "user");
+  const Izin = filterByStatus(users, "Izin", "user");
 
   let pesan = (pesan) => {
     if (isError) {
@@ -78,6 +98,86 @@ const Login = () => {
             )}
             <h6 className="mt-4 text-center">{`${pesan}`}</h6>
           </Form>
+          <div>
+            <div>
+              {user && user.role === "user" && (
+                <div className="d-flex justify-content-center">
+                  <hr></hr>
+                  {user && user.status === "Izin" && izin && izin[izin?.length - 1]?.status === "Belum" ? (
+                    <Button onClick={handleShow} className="btn btn-primary" style={{ fontWeight: "700" }}>
+                      Selesaikan Izin
+                    </Button>
+                  ) : (
+                    <Link to="/izin/add" className="btn btn-primary" style={{ fontWeight: "700" }}>
+                      Izin Sekarang
+                    </Link>
+                  )}
+                </div>
+              )}
+              <hr></hr>
+            </div>
+            <div className="d-flex flex-row justify-content-around flex-wrap">
+              <div className="card m-3 p-3" style={{ width: "30rem" }}>
+                <div className="d-flex flex-row justify-content-between align-items-end">
+                  <h2>Sedang Di Kantor</h2>
+                  <h5>
+                    <Badge bg="dark">
+                      Jumlah <Badge bg="success">{`( ${Tersedia.length} )`}</Badge>
+                    </Badge>
+                  </h5>
+                </div>
+                <hr></hr>
+                {Tersedia.length !== 0 ? (
+                  <Table responsive striped="column">
+                    <tbody>
+                      {Tersedia.map((user) => (
+                        <tr key={user.uuid}>
+                          <td>{user.name}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                ) : loading === true ? (
+                  <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
+                    <Spinner animation="border" variant="secondary" />
+                    Memuat Data...
+                  </Alert>
+                ) : (
+                  <Alert variant="warning">Kemana semua pegawai?</Alert>
+                )}
+              </div>
+
+              <div className="m-3 p-3 card" style={{ width: "30rem" }}>
+                <div className="d-flex flex-row justify-content-between align-items-end">
+                  <h2>Sedang Izin</h2>
+                  <h5>
+                    <Badge bg="dark">
+                      Jumlah <Badge bg="danger">{`( ${Izin.length} )`}</Badge>
+                    </Badge>
+                  </h5>
+                </div>
+                <hr></hr>
+                {Izin.length !== 0 ? (
+                  <Table responsive striped="column">
+                    <tbody>
+                      {Izin.map((user) => (
+                        <tr key={user.uuid}>
+                          <td>{user.name}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                ) : loading === true ? (
+                  <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
+                    <Spinner animation="border" variant="secondary" />
+                    Memuat Data...
+                  </Alert>
+                ) : (
+                  <Alert variant="info">Tidak Ada Izin Tercatat</Alert>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       </Card>
     </Container>
