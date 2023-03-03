@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Container, Table, Button, Modal } from "react-bootstrap";
+import { Container, Table, Button, Modal, Spinner, Alert } from "react-bootstrap";
 import "bootstrap";
 import "../app.css";
 
@@ -59,7 +59,7 @@ const UserList = () => {
           </Modal.Footer>
         ) : (
           <Modal.Footer>
-            <Button variant="primary" onClick={() => deleteIzin(usr)}>
+            <Button variant="primary" onClick={() => deleteUser(usr)}>
               Ya
             </Button>
             <Button variant="danger" onClick={handleClose}>
@@ -82,7 +82,7 @@ const UserList = () => {
       </div>
       <hr></hr>
       <div className="mx-2">
-        {izin.length !== 0 ? (
+        {users.length !== 0 ? (
           <Table responsive striped="columns" bordered>
             <thead>
               <tr className="">

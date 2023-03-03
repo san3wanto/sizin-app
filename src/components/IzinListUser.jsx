@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 // import { useSelector } from "react-redux";
-import { Container, Table, Button } from "react-bootstrap";
+import { Container, Table, Spinner, Alert } from "react-bootstrap";
 import "bootstrap";
 import "../app.css";
 
