@@ -95,50 +95,43 @@ const Login = () => {
       </Navbar>
       );
       <Container fluid className="vh-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: "grey" }}>
-        <Modal show={show} onHide={handleClose} centered>
-          <Modal.Header>
+        <Modal show={show} onHide={handleClose} backdrop="static" centered>
+          <Modal.Header className="d-flex flex-column align-items-center">
             <Modal.Title>Masukkan Username dan Password Anda</Modal.Title>
+            <img className="fluid" src={logo} alt="bps logo" width="250px" />
           </Modal.Header>
           <Modal.Body>
-            <Form>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="name@example.com" autoFocus />
+            <Form onSubmit={Auth} className="mt-lg-5 mb-lg-5">
+              {isError}
+              <Form.Group className="mb-3 mt-3" controlId="formBasicUsername">
+                <Form.Label className="fw-bold">Username</Form.Label>
+                <Form.Control type="text" className="input" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Masukkan Username" />
               </Form.Group>
-              <Form onSubmit={Auth} className="mt-lg-5 mb-lg-5">
-                <img className="fluid" src={logo} alt="bps logo" width="250px" />
-                {isError}
-                <Form.Group className="mb-3 mt-3" controlId="formBasicUsername">
-                  <Form.Label className="fw-bold">Username</Form.Label>
-                  <Form.Control type="text" className="input" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Masukkan Username" />
-                </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label className="fw-bold">Password</Form.Label>
-                  <InputGroup>
-                    <Form.Control type={passwordShown ? "text" : "password"} className="input mr-2" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Masukkan Password" />
-                    <InputGroup.Text>
-                      <box-icon type="solid" name={passwordShown ? "show" : "hide"} size="md color" onClick={togglePassword}></box-icon>
-                    </InputGroup.Text>
-                  </InputGroup>
-                </Form.Group>
-
-                <h6 className="mt-4 text-center">{`${pesan}`}</h6>
-              </Form>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label className="fw-bold">Password</Form.Label>
+                <InputGroup>
+                  <Form.Control type={passwordShown ? "text" : "password"} className="input mr-2" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Masukkan Password" />
+                  <InputGroup.Text>
+                    <box-icon type="solid" name={passwordShown ? "show" : "hide"} size="md color" onClick={togglePassword}></box-icon>
+                  </InputGroup.Text>
+                </InputGroup>
+              </Form.Group>
+              {isLoading ? (
+                <Button variant="primary" className="d-flex w-100 justify-content-center" disabled>
+                  <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
+                  Memproses...
+                </Button>
+              ) : (
+                <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center">
+                  Masuk
+                </Button>
+              )}
+              <h6 className="mt-4 text-center">{`${pesan}`}</h6>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            {isLoading ? (
-              <Button variant="primary" className="d-flex w-100 justify-content-center" disabled>
-                <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
-                Memproses...
-              </Button>
-            ) : (
-              <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center">
-                Masuk
-              </Button>
-            )}
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant="secondary" className="d-flex w-100 justify-content-center" onClick={handleClose}>
               Kembali
             </Button>
           </Modal.Footer>
