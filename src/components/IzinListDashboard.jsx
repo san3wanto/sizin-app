@@ -61,7 +61,7 @@ const IzinList = () => {
     setShow(false);
   };
 
-  user && izin !== (null || undefined) ? setLoading(false) : setLoading(true);
+  user || izin === (null || undefined || "") ? setLoading(false) : setLoading(true);
 
   console.log(`Ini adalah ${user}`);
   console.log(`Ini adalah ${izin}`);
