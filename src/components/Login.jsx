@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { LoginUser, reset } from "../features/authSlice";
 import { Button, Container, Form, InputGroup, Navbar, Nav, Modal, Spinner, Table, Badge, Alert } from "react-bootstrap";
 import logo from "../bps.png";
+import Layout from "../Pages/Layout";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -16,7 +17,6 @@ const Login = () => {
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
   const [show, setShow] = useState(false);
-  const [xError, setXerror] = useState(isError);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -61,7 +61,7 @@ const Login = () => {
   };
 
   return (
-    <Container>
+    <Layout>
       <Navbar bg="primary" variant="dark" fixed="top">
         <Container>
           <Navbar.Brand>
@@ -187,7 +187,7 @@ const Login = () => {
           </div>
         </div>
       </Container>
-    </Container>
+    </Layout>
   );
 };
 
