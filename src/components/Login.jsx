@@ -32,13 +32,16 @@ const Login = () => {
 
   console.log(users);
 
-  // function filterByStatus(user, status, role) {
-  //   return user.filter(function (user) {
-  //     return user.status.includes(status) && user.role.includes(role);
-  //   });
-  // }
-  // const Tersedia = filterByStatus(users, "Tersedia", "user");
-  // const Izin = filterByStatus(users, "Izin", "user");
+  function filterByStatus(user, status, role) {
+    return user.filter(function (user) {
+      return user.status?.includes(status) && user.role.includes(role);
+    });
+  }
+  const Tersedia = filterByStatus(users, "Tersedia", "user");
+  const Izin = filterByStatus(users, "Izin", "user");
+
+  console.log(Tersedia);
+  console.log(Izin);
 
   let pesan = (pesan) => {
     if (isError) {
