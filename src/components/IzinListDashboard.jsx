@@ -20,6 +20,7 @@ const IzinList = () => {
     setShow(false);
   };
   const handleShow = () => {
+    setLoading(false);
     setShow(true);
   };
 
