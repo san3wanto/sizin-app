@@ -76,7 +76,7 @@ const IzinList = () => {
         <h2>Daftar Izin</h2>
       </div>
       <hr></hr>
-      <div className="d-flex flex-column align-items-center mx-5 my-2">
+      {/* <div className="d-flex flex-column align-items-center mx-5 my-2">
         <Button size="sm">
           <Link to="/izin/add" className="d-flex flex-row align-items-center" style={{ textDecoration: "none", color: "white" }}>
             <box-icon name="plus-circle" rotate="90" color="white"></box-icon>
@@ -84,7 +84,7 @@ const IzinList = () => {
           </Link>
         </Button>
       </div>
-      <hr></hr>
+      <hr></hr> */}
       <div className="mx-2">
         {izin.length !== 0 ? (
           <Table responsive striped="columns" bordered>
