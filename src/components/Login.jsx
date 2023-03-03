@@ -66,9 +66,16 @@ const Login = () => {
                 </InputGroup.Text>
               </InputGroup>
             </Form.Group>
-            <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center">
-              {isLoading ? "Loading... " : "Login"}
-            </Button>
+            {isLoading ? (
+              <Button variant="primary" className="d-flex w-100 justify-content-center" disabled>
+                <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
+                Memproses...
+              </Button>
+            ) : (
+              <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center">
+                Masuk
+              </Button>
+            )}
             <h6 className="mt-4 text-center">{`${pesan}`}</h6>
           </Form>
         </div>
