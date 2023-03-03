@@ -108,7 +108,7 @@ const FormAddUser = () => {
               <option value="user">User</option>
             </Form.Select>
           </Form.Group>
-          {loading === false ? (
+          {loading === false && !msg ? (
             <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center mt-4">
               Simpan
             </Button>
