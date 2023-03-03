@@ -66,12 +66,12 @@ const IzinList = () => {
             </tbody>
           </Table>
         ) : loading === true ? (
-          <Alert variant="light" className="d-flex flex-row justify-content-center">
+          <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
             <Spinner animation="border" variant="secondary" />
             Memuat Data...
           </Alert>
         ) : (
-          <Alert variant="warning" className="d-flex flex-row justify-content-center">
+          <Alert variant="warning" className="d-flex flex-row justify-content-center align-items-center">
             Belum Ada Ada Data Izin
           </Alert>
         )}

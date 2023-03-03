@@ -138,7 +138,7 @@ const IzinList = () => {
               </tbody>
             </Table>
           ) : loading === true ? (
-            <Alert variant="light">
+            <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
               <Spinner animation="border" variant="secondary" />
               Memuat Data...
             </Alert>
@@ -168,7 +168,7 @@ const IzinList = () => {
               </tbody>
             </Table>
           ) : loading === true ? (
-            <Alert variant="light">
+            <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
               <Spinner animation="border" variant="secondary" />
               Memuat Data...
             </Alert>
