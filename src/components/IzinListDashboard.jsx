@@ -19,8 +19,7 @@ const IzinList = () => {
   const handleClose = () => {
     setShow(false);
   };
-  const handleShow = (id) => {
-    setLoading(id);
+  const handleShow = () => {
     setShow(true);
   };
 
@@ -55,6 +54,7 @@ const IzinList = () => {
   //
 
   const doubleUp = async (userId, izinId) => {
+    setLoading(true);
     await axios.patch(`https://sizin-server.herokuapp.com/users/${userId}/status`);
     await axios.patch(`https://sizin-server.herokuapp.com/izin/${izinId}/finish`);
     getUsers();
@@ -73,12 +73,12 @@ const IzinList = () => {
     <Container>
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Header>
-          <Modal.Title>{`Selesaikan Izin? ${loading}`}</Modal.Title>
+          <Modal.Title>Selesaikan Izin?</Modal.Title>
         </Modal.Header>
         <Modal.Body>{`${izin[izin?.length - 1]?.ket}`}</Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={() => doubleUp(user && user.uuid, izin[izin?.length - 1]?.uuid)}>
-            Selesaikan Izin
+            {loading === false ? "Seleaikan izin" : "Memproses"}
           </Button>
           <Button variant="danger" onClick={handleClose}>
             Batal
@@ -90,7 +90,7 @@ const IzinList = () => {
         {user && user.role === "user" && (
           <div className="d-flex justify-content-center">
             {user && user.status === "Izin" && izin && izin[izin?.length - 1]?.status === "Belum" ? (
-              <Button onClick={() => handleShow(loading)} className="btn btn-primary" style={{ fontWeight: "700" }}>
+              <Button onClick={handleShow} className="btn btn-primary" style={{ fontWeight: "700" }}>
                 Selesaikan Izin
               </Button>
             ) : (
