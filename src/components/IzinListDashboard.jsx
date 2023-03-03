@@ -64,9 +64,9 @@ const IzinList = () => {
     setLoading(false);
   };
 
-  console.log(`Ini adalah ${user}`);
-  console.log(`Ini adalah ${izin}`);
-  console.log(`Sedang loading adalah ${loading}`);
+  // console.log(`Ini adalah ${user}`);
+  // console.log(`Ini adalah ${izin}`);
+  // console.log(`Sedang loading adalah ${loading}`);
   // console.log(user && user.status);
   // console.log(izin[izin.length - 1]?.uuid);
   // console.log(izin[izin.length - 1]?.status);
