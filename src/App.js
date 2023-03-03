@@ -6,7 +6,7 @@ import AddUser from "./Pages/AddUser";
 import EditUser from "./Pages/EditUser";
 import AddIzin from "./Pages/AddIzin";
 import EditIzin from "./Pages/EditIzin";
-import Login from "./Pages/Login";
+import Login from "./components/Login";
 
 function App() {
   return (
