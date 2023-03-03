@@ -20,7 +20,6 @@ const IzinList = () => {
     setShow(false);
   };
   const handleShow = () => {
-    setLoading(false);
     setShow(true);
   };
 
@@ -78,7 +77,7 @@ const IzinList = () => {
         </Modal.Header>
         <Modal.Body>{`${izin[izin?.length - 1]?.ket}`}</Modal.Body>
         <Modal.Footer>
-          {loading === false ? (
+          {loading === true ? (
             <Button variant="primary" disabled>
               <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
               Memproses...
