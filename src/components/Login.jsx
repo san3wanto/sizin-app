@@ -39,7 +39,7 @@ const Login = () => {
     setLoading(false);
   };
 
-  console.log(users);
+  // console.log(users);
 
   function filterByStatus(user, status, role) {
     return user.filter(function (user) {
@@ -49,9 +49,9 @@ const Login = () => {
   const Tersedia = filterByStatus(users, "Tersedia", "user");
   const Izin = filterByStatus(users, "Izin", "user");
 
-  console.log(Tersedia);
-  console.log(Izin);
-  console.log(loading);
+  // console.log(Tersedia);
+  // console.log(Izin);
+  // console.log(loading);
 
   useEffect(() => {
     if (user || isSuccess) {
@@ -83,7 +83,7 @@ const Login = () => {
           </Nav>
         </Container>
       </Navbar>
-      <Container style={{ backgroundColor: "grey" }}>
+      <Container className="vh-100" style={{ backgroundColor: "grey" }}>
         <Modal show={show} onHide={handleClose} backdrop="static" centered>
           <Modal.Header className="d-flex flex-row justify-content-center">
             <img className="fluid" src={logo} alt="bps logo" width="200px" />
