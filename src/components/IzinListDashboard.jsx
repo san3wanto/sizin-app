@@ -145,7 +145,7 @@ const IzinList = () => {
               </tbody>
             </Table>
           ) : (
-            <h3>Tidak Ada Pegawai Izin</h3>
+            <h3>Kemana Semua Pegawai?</h3>
           )}
         </div>
 
@@ -159,22 +159,19 @@ const IzinList = () => {
             </h5>
           </div>
           <hr></hr>
-          <Table responsive striped="columns">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Nama</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Izin.map((user, index) => (
-                <tr key={user.uuid}>
-                  <td datalabel="No">{index + 1}</td>
-                  <td datalabel="Nama">{user.name}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          {Izin.length !== 0 ? (
+            <Table responsive striped="columns">
+              <tbody>
+                {Izin.map((user) => (
+                  <tr key={user.uuid}>
+                    <td datalabel="Nama">{user.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          ) : (
+            <h3>Semua Pegawai Di Kantor</h3>
+          )}
         </div>
       </div>
     </Container>
