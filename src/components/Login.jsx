@@ -13,7 +13,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.auth);
   const [passwordShown, setPasswordShown] = useState(false);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
 
   const togglePassword = () => {
@@ -27,16 +27,18 @@ const Login = () => {
   const getUsersPub = async () => {
     const response = await axios.get("https://sizin-server.herokuapp.com/users/pub");
     setUsers(response.data);
-    setLoading(false);
+    // setLoading(false);
   };
 
-  function filterByStatus(user, status, role) {
-    return user.filter(function (user) {
-      return user.status.includes(status) && user.role.includes(role);
-    });
-  }
-  const Tersedia = filterByStatus(users, "Tersedia", "user");
-  const Izin = filterByStatus(users, "Izin", "user");
+  console.log(users);
+
+  // function filterByStatus(user, status, role) {
+  //   return user.filter(function (user) {
+  //     return user.status.includes(status) && user.role.includes(role);
+  //   });
+  // }
+  // const Tersedia = filterByStatus(users, "Tersedia", "user");
+  // const Izin = filterByStatus(users, "Izin", "user");
 
   let pesan = (pesan) => {
     if (isError) {
