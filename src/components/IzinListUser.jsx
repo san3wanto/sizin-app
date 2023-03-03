@@ -54,8 +54,8 @@ const IzinList = () => {
             <tbody>
               {izin.map((izin, index) => (
                 <tr key={izin.uuid}>
-                  <td datalabel="No">{index + 1}</td>
-                  <td datalabel="Ket" className="text-break">
+                  <td datalabel=" ">{index + 1}</td>
+                  <td datalabel="Keterangan Izin" className="text-break">
                     {izin.ket}
                   </td>
                   <td datalabel="Tanggal Dibuat">{`${dayjs(izin.createdAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>

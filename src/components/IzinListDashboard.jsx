@@ -100,9 +100,9 @@ const IzinList = () => {
         )}
       </Modal>
       <div>
+        <hr></hr>
         {user && user.role === "user" && (
           <div className="d-flex justify-content-center">
-            <hr></hr>
             {user && user.status === "Izin" && izin && izin[izin?.length - 1]?.status === "Belum" ? (
               <Button onClick={handleShow} className="btn btn-primary" style={{ fontWeight: "700" }}>
                 Selesaikan Izin

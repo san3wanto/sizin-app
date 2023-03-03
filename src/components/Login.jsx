@@ -93,7 +93,7 @@ const Login = () => {
           </Nav>
         </Container>
       </Navbar>
-      <Container>
+      <Container style={{ backgroundColor: "grey" }}>
         <Modal show={show} onHide={handleClose} backdrop="static" centered>
           <Modal.Header className="d-flex flex-row justify-content-center">
             <img className="fluid" src={logo} alt="bps logo" width="200px" />
