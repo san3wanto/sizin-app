@@ -19,7 +19,8 @@ const IzinList = () => {
   const handleClose = () => {
     setShow(false);
   };
-  const handleShow = () => {
+  const handleShow = (id) => {
+    setLoading(id);
     setShow(true);
   };
 
@@ -72,7 +73,7 @@ const IzinList = () => {
     <Container>
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Header>
-          <Modal.Title>Selesaikan Izin?</Modal.Title>
+          <Modal.Title>{`Selesaikan Izin? ${loading}`}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{`${izin[izin?.length - 1]?.ket}`}</Modal.Body>
         <Modal.Footer>
@@ -89,7 +90,7 @@ const IzinList = () => {
         {user && user.role === "user" && (
           <div className="d-flex justify-content-center">
             {user && user.status === "Izin" && izin && izin[izin?.length - 1]?.status === "Belum" ? (
-              <Button onClick={handleShow} className="btn btn-primary" style={{ fontWeight: "700" }}>
+              <Button onClick={() => handleShow(loading)} className="btn btn-primary" style={{ fontWeight: "700" }}>
                 Selesaikan Izin
               </Button>
             ) : (
