@@ -58,7 +58,7 @@ const IzinList = () => {
               Memproses...
             </Button>
             <Button variant="danger" disabled>
-              Batal
+              Tidak
             </Button>
           </Modal.Footer>
         ) : (
@@ -132,12 +132,14 @@ const IzinList = () => {
             </tbody>
           </Table>
         ) : loading === true ? (
-          <Alert variant="light">
+          <Alert variant="light" className="d-flex flex-row justify-content-center">
             <Spinner animation="border" variant="secondary" />
             Memuat Data...
           </Alert>
         ) : (
-          <Alert variant="warning">Kemana semua pegawai?</Alert>
+          <Alert variant="warning" className="d-flex flex-row justify-content-center">
+            Belum Ada Ada Data Izin
+          </Alert>
         )}
       </div>
     </Container>
