@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LoginUser, reset } from "../features/authSlice";
 import { Button, Container, Form, InputGroup, Card, Spinner, Table, Badge, Alert } from "react-bootstrap";
+import Layout from "../Pages/Layout";
 import logo from "../bps.png";
 
 const Login = () => {
@@ -15,6 +16,10 @@ const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -74,26 +79,55 @@ const Login = () => {
   }
 
   return (
-    <Container fluid className="vh-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: "grey" }}>
-      <Card style={{ borderRadius: "1.5rem" }} className="d-flex align-items-center justify-content-center p-5">
-        <div className="d-flex flex-column align-items-center w-50">
-          <Form onSubmit={Auth} className="mt-lg-5 mb-lg-5">
-            <img className="fluid" src={logo} alt="bps logo" width="250px" />
-            {isError}
-            <Form.Group className="mb-3 mt-3" controlId="formBasicUsername">
-              <Form.Label className="fw-bold">Username</Form.Label>
-              <Form.Control type="text" className="input" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Masukkan Username" />
-            </Form.Group>
+    <Layout>
+      <Navbar bg="primary" variant="dark" fixed="top">
+        <Container>
+          <Navbar.Brand>
+            <img alt="logo bps palu" src={logo} style={{ width: "200px" }} />
+          </Navbar.Brand>
+          <Nav className="me-auto"></Nav>
+          <Nav>
+            <Button variant="light" onClick={handleShow}>
+              Login
+            </Button>
+          </Nav>
+        </Container>
+      </Navbar>
+      );
+      <Container fluid className="vh-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: "grey" }}>
+        <Modal show={show} onHide={handleClose} centered>
+          <Modal.Header>
+            <Modal.Title>Masukkan Username dan Password Anda</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="name@example.com" autoFocus />
+              </Form.Group>
+              <Form onSubmit={Auth} className="mt-lg-5 mb-lg-5">
+                <img className="fluid" src={logo} alt="bps logo" width="250px" />
+                {isError}
+                <Form.Group className="mb-3 mt-3" controlId="formBasicUsername">
+                  <Form.Label className="fw-bold">Username</Form.Label>
+                  <Form.Control type="text" className="input" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Masukkan Username" />
+                </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label className="fw-bold">Password</Form.Label>
-              <InputGroup>
-                <Form.Control type={passwordShown ? "text" : "password"} className="input mr-2" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Masukkan Password" />
-                <InputGroup.Text>
-                  <box-icon type="solid" name={passwordShown ? "show" : "hide"} size="md color" onClick={togglePassword}></box-icon>
-                </InputGroup.Text>
-              </InputGroup>
-            </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Label className="fw-bold">Password</Form.Label>
+                  <InputGroup>
+                    <Form.Control type={passwordShown ? "text" : "password"} className="input mr-2" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Masukkan Password" />
+                    <InputGroup.Text>
+                      <box-icon type="solid" name={passwordShown ? "show" : "hide"} size="md color" onClick={togglePassword}></box-icon>
+                    </InputGroup.Text>
+                  </InputGroup>
+                </Form.Group>
+
+                <h6 className="mt-4 text-center">{`${pesan}`}</h6>
+              </Form>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
             {isLoading ? (
               <Button variant="primary" className="d-flex w-100 justify-content-center" disabled>
                 <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
@@ -104,11 +138,14 @@ const Login = () => {
                 Masuk
               </Button>
             )}
-            <h6 className="mt-4 text-center">{`${pesan}`}</h6>
-          </Form>
-        </div>
-      </Card>
-      <Card style={{ borderRadius: "1.5rem" }} className="d-flex align-items-center justify-content-center p-5">
+            <Button variant="secondary" onClick={handleClose}>
+              Kembali
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        {/* <Card style={{ borderRadius: "1.5rem" }} className="d-flex align-items-center justify-content-center p-5">
+          <div className="d-flex flex-column align-items-center w-50"></div>
+        </Card> */}
         <div className="d-flex flex-row justify-content-around flex-wrap">
           <div className="card m-3 p-3" style={{ width: "30rem" }}>
             <div className="d-flex flex-row justify-content-between align-items-end">
@@ -170,8 +207,8 @@ const Login = () => {
             )}
           </div>
         </div>
-      </Card>
-    </Container>
+      </Container>
+    </Layout>
   );
 };
 
