@@ -13,7 +13,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.auth);
   const [passwordShown, setPasswordShown] = useState(false);
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
 
   const togglePassword = () => {
@@ -25,9 +25,10 @@ const Login = () => {
   }, []);
 
   const getUsersPub = async () => {
+    setLoading(true);
     const response = await axios.get("https://sizin-server.herokuapp.com/users/pub");
     setUsers(response.data);
-    // setLoading(false);
+    setLoading(false);
   };
 
   console.log(users);
@@ -42,6 +43,7 @@ const Login = () => {
 
   console.log(Tersedia);
   console.log(Izin);
+  console.log(loading);
 
   let pesan = (pesan) => {
     if (isError) {
