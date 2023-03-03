@@ -18,7 +18,10 @@ const Login = () => {
   const [users, setUsers] = useState([]);
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    isError = false;
+  };
   const handleShow = () => setShow(true);
 
   const togglePassword = () => {
