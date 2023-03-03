@@ -3,7 +3,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LoginUser, reset } from "../features/authSlice";
-import { Button, Container, Form, InputGroup, Card, Spinner, Table, Badge, Alert } from "react-bootstrap";
+import { Button, Container, Form, InputGroup, Navbar, Nav, Modal, Spinner, Table, Badge, Alert } from "react-bootstrap";
 import Layout from "../Pages/Layout";
 import logo from "../bps.png";
 
