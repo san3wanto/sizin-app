@@ -50,15 +50,6 @@ const Login = () => {
   console.log(Izin);
   console.log(loading);
 
-  let pesan = (pesan) => {
-    if (isError) {
-      pesan = message;
-    } else {
-      pesan = "Masukkan username dan password";
-    }
-    return pesan;
-  };
-
   useEffect(() => {
     if (user || isSuccess) {
       navigate("/dashboard");
@@ -71,12 +62,6 @@ const Login = () => {
     e.preventDefault();
     dispatch(LoginUser({ username, password }));
   };
-
-  if (isError) {
-    pesan = message;
-  } else {
-    pesan = "Masukkan Username dan Password";
-  }
 
   return (
     <Layout>
@@ -103,18 +88,19 @@ const Login = () => {
               {isError}
               <Form.Group className="mb-3 mt-3" controlId="formBasicUsername">
                 <Form.Label className="fw-bold">Username</Form.Label>
-                <Form.Control type="text" className="input" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Masukkan Username" />
+                <Form.Control type="text" className="input" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label className="fw-bold">Password</Form.Label>
                 <InputGroup>
-                  <Form.Control type={passwordShown ? "text" : "password"} className="input mr-2" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Masukkan Password" />
+                  <Form.Control type={passwordShown ? "text" : "password"} className="input mr-2" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
                   <InputGroup.Text>
                     <box-icon type="solid" name={passwordShown ? "show" : "hide"} size="md color" onClick={togglePassword}></box-icon>
                   </InputGroup.Text>
                 </InputGroup>
               </Form.Group>
+              <Alert variant={isError ? "danger" : "light"}>{isError ? message : "Masukkan Username dan Password Anda"}</Alert>
               {isLoading ? (
                 <div>
                   <Button variant="primary" className="d-flex w-100 justify-content-center mb-2" disabled>
@@ -135,8 +121,6 @@ const Login = () => {
                   </Button>
                 </div>
               )}
-
-              <h6 className="mt-4 text-center">{`${pesan}`}</h6>
             </Form>
           </Modal.Body>
         </Modal>
