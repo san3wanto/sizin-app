@@ -80,21 +80,21 @@ const IzinList = () => {
         <Modal.Footer>
           {loading === true ? (
             <div>
-              <Button variant="primary" disabled>
+              <Button variant="primary" disabled className="mr-1 ml-1">
                 <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
                 {console.log(loading)}
                 Memproses...
               </Button>
-              <Button variant="danger" disabled>
+              <Button variant="danger" disabled className="mr-1 ml-1">
                 Batal
               </Button>
             </div>
           ) : (
             <div>
-              <Button variant="primary" onClick={() => doubleUp(user && user.uuid, izin[izin?.length - 1]?.uuid)}>
+              <Button variant="primary" className="mr-1 ml-1" onClick={() => doubleUp(user && user.uuid, izin[izin?.length - 1]?.uuid)}>
                 Selesaikan
               </Button>
-              <Button variant="danger" onClick={handleClose}>
+              <Button variant="danger" className="mr-1 ml-1" onClick={handleClose}>
                 Batal
               </Button>
             </div>
