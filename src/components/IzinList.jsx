@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Container, Table, Button, Modal } from "react-bootstrap";
+import { Container, Table, Button, Modal, Spinner, Alert } from "react-bootstrap";
 import "bootstrap";
 import "../app.css";
 
@@ -13,6 +13,7 @@ const IzinList = () => {
   const [izin, setIzin] = useState([]);
   const [show, setShow] = useState(false);
   const [idzin, setIdzin] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const handleClose = () => {
     setShow(false);
@@ -20,6 +21,7 @@ const IzinList = () => {
   const handleShow = (id) => {
     setIdzin(id);
     setShow(true);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -29,12 +31,15 @@ const IzinList = () => {
   const getIzin = async () => {
     const response = await axios.get("https://sizin-server.herokuapp.com/izin");
     setIzin(response.data);
+    setLoading(false);
   };
 
   // method hapus izin
   const deleteIzin = async (izinId) => {
+    setLoading(true);
     await axios.delete(`https://sizin-server.herokuapp.com/izin/${izinId}`);
     getIzin();
+    setLoading(false);
     setShow(false);
   };
 
@@ -45,14 +50,27 @@ const IzinList = () => {
           <Modal.Title>Peringatan!!!</Modal.Title>
         </Modal.Header>
         <Modal.Body>Apakah anda yakin ingin menghapus data izin?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={() => deleteIzin(idzin)}>
-            Ya
-          </Button>
-          <Button variant="danger" onClick={handleClose}>
-            Tidak
-          </Button>
-        </Modal.Footer>
+        {loading === true ? (
+          <Modal.Footer>
+            <Button variant="primary" disabled>
+              <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
+              {console.log(loading)}
+              Memproses...
+            </Button>
+            <Button variant="danger" disabled>
+              Batal
+            </Button>
+          </Modal.Footer>
+        ) : (
+          <Modal.Footer>
+            <Button variant="primary" onClick={() => deleteIzin(idzin)}>
+              Ya
+            </Button>
+            <Button variant="danger" onClick={handleClose}>
+              TidaK
+            </Button>
+          </Modal.Footer>
+        )}
       </Modal>
       <div className="d-flex flex-column align-items-center mt-3">
         <h2>Daftar Izin</h2>
@@ -68,50 +86,59 @@ const IzinList = () => {
       </div>
       <hr></hr>
       <div className="mx-2">
-        <Table responsive striped="columns" bordered>
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Nama</th>
-              <th>NIP</th>
-              <th>Jabatan</th>
-              <th>Keterangan</th>
-              <th>Dibuat</th>
-              <th>Diubah</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {izin.map((izin, index) => (
-              <tr key={izin.uuid}>
-                <td datalabel="No">{index + 1}</td>
-                <td datalabel="Nama">{izin.user.name}</td>
-                <td datalabel="NIP" className="text-break">
-                  {izin.user.nip}
-                </td>
-                <td datalabel="Jabatan">{izin.user.jab}</td>
-                <td datalabel="Keterangan" className="text-break">
-                  {izin.ket}
-                </td>
-                <td datalabel="Tanggal Dibuat">{`${dayjs(izin.createdAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
-                <td datalabel="Waktu Dibuat">{`${dayjs(izin.updatedAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
-                <td datalabel="Status">{izin.status}</td>
-                <td datalabel="Aksi" className="act d-flex justify-content-around flex-wrap">
-                  <Button variant="primary" size="sm" className="m-1">
-                    <Link to={`/izin/edit/${izin.uuid}`} style={{ textDecoration: "none", color: "white" }}>
-                      Ubah
-                    </Link>
-                  </Button>
-                  {"   "}
-                  <Button variant="danger" size="sm" onClick={() => handleShow(izin.uuid)} className="m-1">
-                    Hapus
-                  </Button>
-                </td>
+        {izin.length !== 0 ? (
+          <Table responsive striped="columns" bordered>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>NIP</th>
+                <th>Jabatan</th>
+                <th>Keterangan</th>
+                <th>Dibuat</th>
+                <th>Diubah</th>
+                <th>Status</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {izin.map((izin, index) => (
+                <tr key={izin.uuid}>
+                  <td datalabel="No">{index + 1}</td>
+                  <td datalabel="Nama">{izin.user.name}</td>
+                  <td datalabel="NIP" className="text-break">
+                    {izin.user.nip}
+                  </td>
+                  <td datalabel="Jabatan">{izin.user.jab}</td>
+                  <td datalabel="Keterangan" className="text-break">
+                    {izin.ket}
+                  </td>
+                  <td datalabel="Tanggal Dibuat">{`${dayjs(izin.createdAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
+                  <td datalabel="Waktu Dibuat">{`${dayjs(izin.updatedAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
+                  <td datalabel="Status">{izin.status}</td>
+                  <td datalabel="Aksi" className="act d-flex justify-content-around flex-wrap">
+                    <Button variant="primary" size="sm" className="m-1">
+                      <Link to={`/izin/edit/${izin.uuid}`} style={{ textDecoration: "none", color: "white" }}>
+                        Ubah
+                      </Link>
+                    </Button>
+                    {"   "}
+                    <Button variant="danger" size="sm" onClick={() => handleShow(izin.uuid)} className="m-1">
+                      Hapus
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        ) : loading === true ? (
+          <Alert variant="light">
+            <Spinner animation="border" variant="secondary" />
+            Memuat Data...
+          </Alert>
+        ) : (
+          <Alert variant="warning">Kemana semua pegawai?</Alert>
+        )}
       </div>
     </Container>
   );
