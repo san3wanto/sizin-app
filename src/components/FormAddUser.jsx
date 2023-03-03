@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Container, Button, Card, Form, InputGroup } from "react-bootstrap";
+import { Container, Button, Card, Form, InputGroup, Spinner } from "react-bootstrap";
 import "bootstrap";
+import { set } from "immer/dist/internal";
 
 const FormAddUser = () => {
   const [name, setName] = useState("");
@@ -15,10 +16,12 @@ const FormAddUser = () => {
   const [role, setRole] = useState("");
   const [msg, setMsg] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const saveUser = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await axios.post("https://sizin-server.herokuapp.com/users", {
         name: name,
@@ -30,6 +33,7 @@ const FormAddUser = () => {
         confPassword: confPassword,
         role: role,
       });
+      setLoading(false);
       navigate("/users");
     } catch (error) {
       if (error.response) {
@@ -45,7 +49,7 @@ const FormAddUser = () => {
   return (
     <Container fluid className="d-flex flex-column align-items-center">
       <div className="d-flex flex-column mt-2">
-        <h2>Form User</h2>
+        <h2>Form Data user</h2>
       </div>
       <Card className="d-flex flex-column p-5" style={{ borderRadius: "1.2rem" }}>
         <Form onSubmit={saveUser}>
@@ -105,9 +109,17 @@ const FormAddUser = () => {
               <option value="user">User</option>
             </Form.Select>
           </Form.Group>
-          <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center mt-4">
-            Simpan
-          </Button>
+          {loading === false ? (
+            <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center mt-4">
+              Simpan
+            </Button>
+          ) : (
+            <Button variant="primary" className="d-flex w-100 justify-content-center mt-4" disabled>
+              <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
+              {console.log(loading)}
+              Memproses...
+            </Button>
+          )}
         </Form>
       </Card>
     </Container>

@@ -76,7 +76,7 @@ const UserList = () => {
         <Button size="sm">
           <Link to="/users/add" className="d-flex flex-row align-items-center" style={{ textDecoration: "none", color: "white" }}>
             <box-icon name="plus-circle" rotate="90" color="white"></box-icon>
-            Tambahkan
+            Tambahkan User Baru
           </Link>
         </Button>
       </div>
