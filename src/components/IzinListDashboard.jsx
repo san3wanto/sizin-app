@@ -77,9 +77,16 @@ const IzinList = () => {
         </Modal.Header>
         <Modal.Body>{`${izin[izin?.length - 1]?.ket}`}</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={() => doubleUp(user && user.uuid, izin[izin?.length - 1]?.uuid)}>
-            {loading === false ? "Seleaikan izin" : "Memproses"}
-          </Button>
+          {loading === false ? (
+            <Button variant="primary" disabled>
+              <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
+              Memproses...
+            </Button>
+          ) : (
+            <Button variant="primary" onClick={() => doubleUp(user && user.uuid, izin[izin?.length - 1]?.uuid)}>
+              Selesaikan
+            </Button>
+          )}
           <Button variant="danger" onClick={handleClose}>
             Batal
           </Button>
