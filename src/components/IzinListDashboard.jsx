@@ -137,6 +137,11 @@ const IzinList = () => {
                 ))}
               </tbody>
             </Table>
+          ) : loading === true ? (
+            <Alert variant="light">
+              <Spinner animation="border" variant="secondary" />
+              Memuat Data...
+            </Alert>
           ) : (
             <Alert variant="warning">Kemana semua pegawai?</Alert>
           )}
@@ -162,8 +167,13 @@ const IzinList = () => {
                 ))}
               </tbody>
             </Table>
+          ) : loading === true ? (
+            <Alert variant="light">
+              <Spinner animation="border" variant="secondary" />
+              Memuat Data...
+            </Alert>
           ) : (
-            <Alert variant="info">Tidak ada Laporan Izin</Alert>
+            <Alert variant="info">Tidak Ada Izin Tercatat</Alert>
           )}
         </div>
       </div>
