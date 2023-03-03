@@ -93,7 +93,6 @@ const Login = () => {
           </Nav>
         </Container>
       </Navbar>
-      );
       <Container fluid className="vh-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: "grey" }}>
         <Modal show={show} onHide={handleClose} backdrop="static" centered>
           <Modal.Header className="d-flex flex-row justify-content-center">
@@ -118,7 +117,7 @@ const Login = () => {
               </Form.Group>
               {isLoading ? (
                 <div>
-                  <Button variant="primary" className="d-flex w-100 justify-content-center" disabled>
+                  <Button variant="primary" className="d-flex w-100 justify-content-center mb-2" disabled>
                     <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
                     Memproses...
                   </Button>
@@ -128,7 +127,7 @@ const Login = () => {
                 </div>
               ) : (
                 <div>
-                  <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center">
+                  <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center mb-2">
                     Masuk
                   </Button>
                   <Button variant="secondary" className="d-flex w-100 justify-content-center" onClick={handleClose}>
@@ -157,6 +156,11 @@ const Login = () => {
             <hr></hr>
             {Tersedia.length !== 0 ? (
               <Table responsive striped="column">
+                <thead>
+                  <tr>
+                    <td>Nama</td>
+                  </tr>
+                </thead>
                 <tbody>
                   {Tersedia.map((user) => (
                     <tr key={user.uuid}>
