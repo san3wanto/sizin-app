@@ -127,22 +127,26 @@ const IzinList = () => {
             </h5>
           </div>
           <hr></hr>
-          <Table responsive striped="columns">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Nama</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Tersedia.map((user, index) => (
-                <tr key={user.uuid}>
-                  <td datalabel="No">{index + 1}</td>
-                  <td datalabel="Nama">{user.name}</td>
+          {Tersedia.length !== 0 ? (
+            <Table responsive striped="columns">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
+              </thead>
+              <tbody>
+                {Tersedia.map((user, index) => (
+                  <tr key={user.uuid}>
+                    <td datalabel="No">{index + 1}</td>
+                    <td datalabel="Nama">{user.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          ) : (
+            <h3>Tidak Ada Pegawai Izin</h3>
+          )}
         </div>
 
         <div className="m-3 p-3 card" style={{ width: "30rem" }}>
