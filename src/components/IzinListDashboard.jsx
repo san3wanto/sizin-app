@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Container, Table, Button, Badge, Modal, Spinner } from "react-bootstrap";
+import { Container, Table, Button, Badge, Modal, Spinner, Alert } from "react-bootstrap";
 import "bootstrap";
 
 const dayjs = require("dayjs");
@@ -128,24 +128,19 @@ const IzinList = () => {
           </div>
           <hr></hr>
           {Tersedia.length !== 0 ? (
-            <Table responsive striped="columns">
-              <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Nama</th>
-                </tr>
-              </thead>
+            <Table responsive striped="column">
               <tbody>
-                {Tersedia.map((user, index) => (
+                {Tersedia.map((user) => (
                   <tr key={user.uuid}>
-                    <td datalabel="No">{index + 1}</td>
-                    <td datalabel="Nama">{user.name}</td>
+                    <td>{user.name}</td>
                   </tr>
                 ))}
               </tbody>
             </Table>
           ) : (
-            <h3>Kemana Semua Pegawai?</h3>
+            <div className="d-flex flex-column align-items-center justify-content-center">
+              <Alert variant="warning">Kemana semua pegawai?</Alert>
+            </div>
           )}
         </div>
 
@@ -160,17 +155,19 @@ const IzinList = () => {
           </div>
           <hr></hr>
           {Izin.length !== 0 ? (
-            <Table responsive striped="columns">
+            <Table responsive striped="column">
               <tbody>
                 {Izin.map((user) => (
                   <tr key={user.uuid}>
-                    <td datalabel="Nama">{user.name}</td>
+                    <td>{user.name}</td>
                   </tr>
                 ))}
               </tbody>
             </Table>
           ) : (
-            <h3>Semua Pegawai Di Kantor</h3>
+            <div className="d-flex flex-column align-items-center justify-content-center">
+              <Alert variant="info">Tidak ada Laporan Izin</Alert>
+            </div>
           )}
         </div>
       </div>
