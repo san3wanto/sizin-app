@@ -66,6 +66,8 @@ const Login = () => {
     dispatch(LoginUser({ username, password }));
   };
 
+  console.log(`Ini nilai dari isError ${isError}`);
+
   return (
     <Layout>
       <Navbar bg="primary" variant="dark" fixed="top">
@@ -103,7 +105,8 @@ const Login = () => {
                   </InputGroup.Text>
                 </InputGroup>
               </Form.Group>
-              <Alert variant={isError ? "danger" : "light"}>{isError ? message : "Masukkan Username dan Password Anda"}</Alert>
+              {isSuccess ? <Alert variant="success">Berhasil Masuk!</Alert> : <Alert variant={isError ? "danger" : "light"}>{isError ? message : "Masukkan Username dan Password Anda"}</Alert>}
+
               {isLoading ? (
                 <div>
                   <Button variant="primary" className="d-flex w-100 justify-content-center mb-2" disabled>
