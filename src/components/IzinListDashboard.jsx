@@ -138,9 +138,7 @@ const IzinList = () => {
               </tbody>
             </Table>
           ) : (
-            <div className="d-flex flex-column align-items-center justify-content-center">
-              <Alert variant="warning">Kemana semua pegawai?</Alert>
-            </div>
+            <Alert variant="warning">Kemana semua pegawai?</Alert>
           )}
         </div>
 
@@ -165,9 +163,7 @@ const IzinList = () => {
               </tbody>
             </Table>
           ) : (
-            <div className="d-flex flex-column align-items-center justify-content-center">
-              <Alert variant="info">Tidak ada Laporan Izin</Alert>
-            </div>
+            <Alert variant="info">Tidak ada Laporan Izin</Alert>
           )}
         </div>
       </div>

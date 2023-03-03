@@ -20,7 +20,7 @@
     word-wrap: break-word;
   }
   Table td::before {
-    content: attr(datalabel) " | ";
+    content: attr(datalabel) " ";
     position: relative;
     left: 0;
     width: 50%;
