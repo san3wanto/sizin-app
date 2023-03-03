@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./Pages/Dashboard";
-import Login from "./components/Login";
 import Users from "./Pages/Users";
 import Izin from "./Pages/Izin";
 import AddUser from "./Pages/AddUser";
 import EditUser from "./Pages/EditUser";
 import AddIzin from "./Pages/AddIzin";
 import EditIzin from "./Pages/EditIzin";
+import Login from "./Pages/Login";
 
 function App() {
   return (
