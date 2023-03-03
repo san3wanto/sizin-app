@@ -99,69 +99,69 @@ const Login = () => {
             )}
             <h6 className="mt-4 text-center">{`${pesan}`}</h6>
           </Form>
-          <div className="d-flex flex-row justify-content-around flex-wrap">
-            <div className="card m-3 p-3" style={{ width: "30rem" }}>
-              <div className="d-flex flex-row justify-content-between align-items-end">
-                <h2>Sedang Di Kantor</h2>
-                <h5>
-                  <Badge bg="dark">
-                    Jumlah <Badge bg="success">{`( ${Tersedia.length} )`}</Badge>
-                  </Badge>
-                </h5>
-              </div>
-              <hr></hr>
-              {Tersedia.length !== 0 ? (
-                <Table responsive striped="column">
-                  <tbody>
-                    {Tersedia.map((user) => (
-                      <tr key={user.uuid}>
-                        <td>{user.name}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </Table>
-              ) : loading === true ? (
-                <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
-                  <Spinner animation="border" variant="secondary" />
-                  Memuat Data...
-                </Alert>
-              ) : (
-                <Alert variant="warning">Kemana semua pegawai?</Alert>
-              )}
-            </div>
-
-            <div className="m-3 p-3 card" style={{ width: "30rem" }}>
-              <div className="d-flex flex-row justify-content-between align-items-end">
-                <h2>Sedang Izin</h2>
-                <h5>
-                  <Badge bg="dark">
-                    Jumlah <Badge bg="danger">{`( ${Izin.length} )`}</Badge>
-                  </Badge>
-                </h5>
-              </div>
-              <hr></hr>
-              {Izin.length !== 0 ? (
-                <Table responsive striped="column">
-                  <tbody>
-                    {Izin.map((user) => (
-                      <tr key={user.uuid}>
-                        <td>{user.name}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </Table>
-              ) : loading === true ? (
-                <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
-                  <Spinner animation="border" variant="secondary" />
-                  Memuat Data...
-                </Alert>
-              ) : (
-                <Alert variant="info">Tidak Ada Izin Tercatat</Alert>
-              )}
-            </div>
-          </div>
         </div>
       </Card>
+      {/* <div className="d-flex flex-row justify-content-around flex-wrap">
+        <div className="card m-3 p-3" style={{ width: "30rem" }}>
+          <div className="d-flex flex-row justify-content-between align-items-end">
+            <h2>Sedang Di Kantor</h2>
+            <h5>
+              <Badge bg="dark">
+                Jumlah <Badge bg="success">{`( ${Tersedia.length} )`}</Badge>
+              </Badge>
+            </h5>
+          </div>
+          <hr></hr>
+          {Tersedia.length !== 0 ? (
+            <Table responsive striped="column">
+              <tbody>
+                {Tersedia.map((user) => (
+                  <tr key={user.uuid}>
+                    <td>{user.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          ) : loading === true ? (
+            <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
+              <Spinner animation="border" variant="secondary" />
+              Memuat Data...
+            </Alert>
+          ) : (
+            <Alert variant="warning">Kemana semua pegawai?</Alert>
+          )}
+        </div>
+
+        <div className="m-3 p-3 card" style={{ width: "30rem" }}>
+          <div className="d-flex flex-row justify-content-between align-items-end">
+            <h2>Sedang Izin</h2>
+            <h5>
+              <Badge bg="dark">
+                Jumlah <Badge bg="danger">{`( ${Izin.length} )`}</Badge>
+              </Badge>
+            </h5>
+          </div>
+          <hr></hr>
+          {Izin.length !== 0 ? (
+            <Table responsive striped="column">
+              <tbody>
+                {Izin.map((user) => (
+                  <tr key={user.uuid}>
+                    <td>{user.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          ) : loading === true ? (
+            <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
+              <Spinner animation="border" variant="secondary" />
+              Memuat Data...
+            </Alert>
+          ) : (
+            <Alert variant="info">Tidak Ada Izin Tercatat</Alert>
+          )}
+        </div>
+      </div> */}
     </Container>
   );
 };
