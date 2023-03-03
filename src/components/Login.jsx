@@ -96,9 +96,8 @@ const Login = () => {
       );
       <Container fluid className="vh-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: "grey" }}>
         <Modal show={show} onHide={handleClose} backdrop="static" centered>
-          <Modal.Header className="d-flex flex-column align-items-center">
-            <Modal.Title>Masukkan Username dan Password Anda</Modal.Title>
-            <img className="fluid" src={logo} alt="bps logo" width="250px" />
+          <Modal.Header className="d-flex flex-row justify-content-center">
+            <img className="fluid" src={logo} alt="bps logo" width="200px" />
           </Modal.Header>
           <Modal.Body>
             <Form onSubmit={Auth} className="mt-lg-5 mb-lg-5">
@@ -118,23 +117,29 @@ const Login = () => {
                 </InputGroup>
               </Form.Group>
               {isLoading ? (
-                <Button variant="primary" className="d-flex w-100 justify-content-center" disabled>
-                  <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
-                  Memproses...
-                </Button>
+                <div>
+                  <Button variant="primary" className="d-flex w-100 justify-content-center" disabled>
+                    <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
+                    Memproses...
+                  </Button>
+                  <Button variant="secondary" className="d-flex w-100 justify-content-center" disabled>
+                    Kembali
+                  </Button>
+                </div>
               ) : (
-                <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center">
-                  Masuk
-                </Button>
+                <div>
+                  <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center">
+                    Masuk
+                  </Button>
+                  <Button variant="secondary" className="d-flex w-100 justify-content-center" onClick={handleClose}>
+                    Kembali
+                  </Button>
+                </div>
               )}
+
               <h6 className="mt-4 text-center">{`${pesan}`}</h6>
             </Form>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" className="d-flex w-100 justify-content-center" onClick={handleClose}>
-              Kembali
-            </Button>
-          </Modal.Footer>
         </Modal>
         {/* <Card style={{ borderRadius: "1.5rem" }} className="d-flex align-items-center justify-content-center p-5">
           <div className="d-flex flex-column align-items-center w-50"></div>
@@ -155,7 +160,7 @@ const Login = () => {
                 <tbody>
                   {Tersedia.map((user) => (
                     <tr key={user.uuid}>
-                      <td>{user.name}</td>
+                      <td datalabale=" ">{user.name}</td>
                     </tr>
                   ))}
                 </tbody>
