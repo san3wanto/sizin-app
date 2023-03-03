@@ -21,6 +21,7 @@ const IzinList = () => {
   };
   const handleShow = () => {
     setShow(true);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -80,6 +81,7 @@ const IzinList = () => {
           {loading === true ? (
             <Button variant="primary" disabled>
               <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
+              {console.log(loading)}
               Memproses...
             </Button>
           ) : (
