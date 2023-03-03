@@ -10,9 +10,11 @@ const FormAddIzin = () => {
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
+  const [loading, setLoading] = useState(false);
 
   const saveIzin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await axios.post("https://sizin-server.herokuapp.com/izin", {
         ket: ket,
@@ -20,6 +22,7 @@ const FormAddIzin = () => {
       if (user && user.role === "admin") {
         navigate("/izin");
       } else {
+        setLoading(false);
         navigate("/dashboard");
       }
     } catch (error) {
@@ -42,9 +45,17 @@ const FormAddIzin = () => {
           <FloatingLabel controlId="floatingTextarea" label="Keterangan Izin" className="mb-3 w-100">
             <Form.Control as="textarea" className="input" value={ket} onChange={(e) => setKet(e.target.value)} placeholder="keterangan izin" />
           </FloatingLabel>
-          <Button type="submit" onClick={() => updateUserStatus(user && user.uuid)} className="Button is-success w-100">
-            Simpan
-          </Button>
+          {loading === false ? (
+            <Button type="submit" onClick={() => updateUserStatus(user && user.uuid)} className="Button is-success w-100">
+              Simpan
+            </Button>
+          ) : (
+            <Button variant="primary" className="d-flex w-100 justify-content-center mt-4" disabled>
+              <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
+              {console.log(loading)}
+              Memproses...
+            </Button>
+          )}
           <p className="has-text-centered">{msg}</p>
         </Form>
       </Card>

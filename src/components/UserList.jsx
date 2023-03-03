@@ -88,7 +88,6 @@ const UserList = () => {
               <tr className="">
                 <th>No</th>
                 <th>Nama</th>
-                <th>Username</th>
                 <th>NIP</th>
                 <th>Jabatan</th>
                 <th>Email</th>
@@ -101,19 +100,10 @@ const UserList = () => {
               {users.map((user, index) => (
                 <tr key={user.uuid} className="">
                   <td datalabel="No">{index + 1}</td>
-                  <td datalabel="Nama" className="text-break">
-                    {user.name}
-                  </td>
-                  <td datalabel="Username" className="text-break">
-                    {user.username}
-                  </td>
-                  <td datalabel="NIP" className="text-break">
-                    {user.nip}
-                  </td>
+                  <td datalabel="Nama">{user.name}</td>
+                  <td datalabel="NIP">{user.nip}</td>
                   <td datalabel="Jabatan">{user.jab}</td>
-                  <td datalabel="Email" className="text-break">
-                    {user.email}
-                  </td>
+                  <td datalabel="Email">{user.email}</td>
                   <td datalabel="Role">{user.role}</td>
                   <td style={user.status === "Izin" ? { color: "red", fontWeight: "600" } : { color: "green", fontWeight: "600" }} datalabel="Status">
                     {user.status}

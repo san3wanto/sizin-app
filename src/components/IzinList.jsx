@@ -92,7 +92,6 @@ const IzinList = () => {
               <tr>
                 <th>No</th>
                 <th>Nama</th>
-                <th>NIP</th>
                 <th>Jabatan</th>
                 <th>Keterangan</th>
                 <th>Dibuat</th>
@@ -106,9 +105,6 @@ const IzinList = () => {
                 <tr key={izin.uuid}>
                   <td datalabel="No">{index + 1}</td>
                   <td datalabel="Nama">{izin.user.name}</td>
-                  <td datalabel="NIP" className="text-break">
-                    {izin.user.nip}
-                  </td>
                   <td datalabel="Jabatan">{izin.user.jab}</td>
                   <td datalabel="Keterangan" className="text-break">
                     {izin.ket}
