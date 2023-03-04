@@ -47,7 +47,7 @@ const Login = () => {
   // console.log(Tersedia);
   // console.log(Izin);
   // console.log(loading);
-  console.log(user);
+  console.log(users);
 
   useEffect(() => {
     if (user || isSuccess) {
