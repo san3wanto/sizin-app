@@ -15,7 +15,8 @@ const Login = () => {
   const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.auth);
   const [passwordShown, setPasswordShown] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [users, setUsers] = useState([]);
+  const [usersAd, setUsersAd] = useState([]);
+  const [usersTd, setUsersTd] = useState([]);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -24,32 +25,44 @@ const Login = () => {
   const togglePassword = () => setPasswordShown(!passwordShown);
 
   useEffect(() => {
-    getUsersPub();
+    getUsersAda();
   }, []);
 
-  const getUsersPub = async () => {
+  useEffect(() => {
+    getUserIzin();
+  }, []);
+
+  const getUsersAda = async () => {
     setLoading(true);
-    const response = await axios.get("https://sizin-server.herokuapp.com/users/pub");
-    setUsers(response.data);
+    const response = await axios.get("https://sizin-server.herokuapp.com/users/ad");
+    setUsersAd(response.data);
+    setLoading(false);
+  };
+
+  const getUserIzin = async () => {
+    setLoading(true);
+    const response = await axios.get("https://sizin-server.herokuapp.com/users/td");
+    setUsersTd(response.data);
     setLoading(false);
   };
 
   // console.log(users);
 
-  function filterByStatus(user, status, role) {
-    return user.filter(function (user) {
-      return user.status?.includes(status) && user.role.includes(role);
-    });
-  }
-  const Tersedia = filterByStatus(users, "Tersedia", "user");
-  const Izin = filterByStatus(users, "Izin", "user");
+  // function filterByStatus(user, status, role) {
+  //   return user.filter(function (user) {
+  //     return user.status?.includes(status) && user.role.includes(role);
+  //   });
+  // }
+  // const Tersedia = filterByStatus(users, "Tersedia", "user");
+  // const Izin = filterByStatus(users, "Izin", "user");
 
   // console.log(Tersedia);
   // console.log(Izin);
   // console.log(loading);
   // console.log(users[1].izin[1].ket);
   // console.log(users[1].izin[1].status);
-  console.log(users);
+  console.log(usersAd);
+  console.log(usersTd);
 
   useEffect(() => {
     if (user || isSuccess) {
@@ -134,15 +147,15 @@ const Login = () => {
               <h2>Sedang Di Kantor</h2>
               <h5>
                 <Badge bg="dark">
-                  Jumlah <Badge bg="success">{`( ${Tersedia.length} )`}</Badge>
+                  Jumlah <Badge bg="success">{`( ${UsersAd.length} )`}</Badge>
                 </Badge>
               </h5>
             </div>
             <hr></hr>
-            {Tersedia.length !== 0 ? (
+            {usersAd.length !== 0 ? (
               <Table responsive striped="column">
                 <tbody>
-                  {Tersedia.map((user) => (
+                  {usersAd.map((user) => (
                     <tr key={user.uuid}>
                       <td>{user.name}</td>
                     </tr>
@@ -164,15 +177,15 @@ const Login = () => {
               <h2>Sedang Izin</h2>
               <h5>
                 <Badge bg="dark">
-                  Jumlah <Badge bg="danger">{`( ${Izin.length} )`}</Badge>
+                  Jumlah <Badge bg="danger">{`( ${UsersTd.length} )`}</Badge>
                 </Badge>
               </h5>
             </div>
             <hr></hr>
-            {Izin.length !== 0 ? (
+            {usersTd.length !== 0 ? (
               <Table responsive striped="column">
                 <tbody>
-                  {Izin.map((user) => (
+                  {UsersTd.map((user) => (
                     <tr key={user.uuid}>
                       <td>{user.name}</td>
                     </tr>
