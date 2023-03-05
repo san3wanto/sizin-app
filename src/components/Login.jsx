@@ -147,7 +147,7 @@ const Login = () => {
               <h2>Sedang Di Kantor</h2>
               <h5>
                 <Badge bg="dark">
-                  Jumlah <Badge bg="success">{`( ${UsersAd.length} )`}</Badge>
+                  Jumlah <Badge bg="success">{`( ${usersAd.length} )`}</Badge>
                 </Badge>
               </h5>
             </div>
@@ -177,7 +177,7 @@ const Login = () => {
               <h2>Sedang Izin</h2>
               <h5>
                 <Badge bg="dark">
-                  Jumlah <Badge bg="danger">{`( ${UsersTd.length} )`}</Badge>
+                  Jumlah <Badge bg="danger">{`( ${usersTd.length} )`}</Badge>
                 </Badge>
               </h5>
             </div>
@@ -185,7 +185,7 @@ const Login = () => {
             {usersTd.length !== 0 ? (
               <Table responsive striped="column">
                 <tbody>
-                  {UsersTd.map((user) => (
+                  {usersTd.map((user) => (
                     <tr key={user.uuid}>
                       <td>{user.name}</td>
                     </tr>
