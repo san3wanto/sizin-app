@@ -12,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.auth);
+  const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.auth);
   const [passwordShown, setPasswordShown] = useState(false);
   const [loading, setLoading] = useState(true);
   const [usersAd, setUsersAd] = useState([]);
