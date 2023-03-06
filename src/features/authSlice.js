@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  user: null,
+  user: {},
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -45,13 +45,7 @@ export const LogOut = createAsyncThunk("user/LogOut", async () => {
 
 export const authSlice = createSlice({
   name: "auth",
-  initialState: {
-    user: null,
-    isError: false,
-    isSuccess: false,
-    isLoading: false,
-    message: "",
-  },
+  initialState,
   reducers: {
     reset: (state) => initialState,
   },
