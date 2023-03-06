@@ -1,17 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit"; //setting awal
-import authReducer from "../features/authSlice"; //setting awal
+import authSlice from "../features/authSlice"; //setting awal
 
 import storage from "redux-persist/lib/storage";
-import { persistReducer, persistStore } from "redux-persist";
+import { persistStore, persistReducer } from "redux-persist";
 import thunk from "redux-thunk";
 
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["user"],
 };
 
-const persistedReducer = persistReducer(persistConfig, authReducer);
+const persistedReducer = persistReducer(persistConfig, authSlice);
 
 export const store = configureStore({
   reducer: persistedReducer,
