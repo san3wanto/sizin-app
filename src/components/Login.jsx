@@ -3,7 +3,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LoginUser, reset } from "../features/authSlice";
-import { Button, Container, Form, InputGroup, Navbar, Nav, Modal, Spinner, Table, Badge, Alert } from "react-bootstrap";
+import { Button, Container, Form, InputGroup, Navbar, Nav, Modal, Spinner, Table, Badge, Alert, Accordion } from "react-bootstrap";
 import logo from "../bps.png";
 import Layout from "../Pages/Layout";
 
@@ -189,6 +189,17 @@ const Login = () => {
                     <tr key={user.uuid}>
                       <td>{user.name}</td>
                       <td>{user.izinData[0].ket}</td>
+                      <td>
+                        <Accordion>
+                          <Accordion.Item eventKey="0">
+                            <Accordion.Header>{user.name}</Accordion.Header>
+                            <Accordion.Body>
+                              <h7>Keterangan Izin</h7>
+                              <p>{user.izinData[0].status}</p>
+                            </Accordion.Body>
+                          </Accordion.Item>
+                        </Accordion>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
