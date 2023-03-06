@@ -190,12 +190,12 @@ const Login = () => {
                       <td>{user.name}</td>
                       <td>{user.izinData[0].ket}</td>
                       <td>
-                        <Accordion>
+                        <Accordion flush>
                           <Accordion.Item eventKey="0">
                             <Accordion.Header>{user.name}</Accordion.Header>
                             <Accordion.Body>
                               <h7>Keterangan Izin</h7>
-                              <p>{user.izinData[0].status}</p>
+                              <p>{user.izinData[0].ket}</p>
                             </Accordion.Body>
                           </Accordion.Item>
                         </Accordion>
