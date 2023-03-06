@@ -203,7 +203,7 @@ const IzinList = () => {
                   </td>
                   <td datalabel="Tanggal Dibuat">{`${dayjs(izin.createdAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
                   <td datalabel="Waktu Dibuat">{`${dayjs(izin.updatedAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
-                  <td datalabel="Status">{izin.status}</td>
+                  <td datalabel="Status Izin">{izin.status}</td>
                 </tr>
               ))}
             </tbody>
