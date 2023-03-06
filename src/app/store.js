@@ -1,8 +1,29 @@
-import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "../features/authSlice";
+import { configureStore } from "@reduxjs/toolkit"; //setting awal
+import authReducer from "../features/authSlice"; //setting awal
+
+import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist";
+import thunk from "redux-thunk";
+
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const persistReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
-  reducer: {
-    auth: authReducer,
-  },
+  reducer: persistReducer,
+  devTools: process.env.NODE_ENV !== "production",
+  middleware: [thunk],
 });
+
+// setting awal
+// export const store = configureStore({
+//   reducer: {
+//     auth: authReducer,
+//   },
+// });
+//setting awal
+
+export const persistor = persistStore(store);
