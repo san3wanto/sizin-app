@@ -187,14 +187,14 @@ const Login = () => {
                 <tbody>
                   {usersTd.map((user) => (
                     <tr key={user.uuid}>
-                      <td>{user.name}</td>
-                      <td>{user.izinData[0].ket}</td>
                       <td>
                         <Accordion flush>
                           <Accordion.Item eventKey="0">
                             <Accordion.Header>{user.name}</Accordion.Header>
                             <Accordion.Body>
-                              <h7>Keterangan Izin</h7>
+                              <p>
+                                <strong>Keterangan Izin</strong>
+                              </p>
                               <p>{user.izinData[0].ket}</p>
                             </Accordion.Body>
                           </Accordion.Item>
