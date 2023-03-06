@@ -177,6 +177,43 @@ const IzinList = () => {
           )}
         </div>
       </div>
+      <div className="mx-2">
+        {izin.length !== 0 ? (
+          <Table responsive striped="columns" bordered>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Keterangan Izin</th>
+                <th>Dibuat</th>
+                <th>Waktu </th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {izin.map((izin, index) => (
+                <tr key={izin.uuid}>
+                  <td datalabel=" ">{index + 1}</td>
+                  <td datalabel="Keterangan Izin" className="text-break">
+                    {izin.ket}
+                  </td>
+                  <td datalabel="Tanggal Dibuat">{`${dayjs(izin.createdAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
+                  <td datalabel="Waktu Dibuat">{`${dayjs(izin.updatedAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
+                  <td datalabel="Status">{izin.status}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        ) : loading === true ? (
+          <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
+            <Spinner animation="border" variant="secondary" />
+            Memuat Data...
+          </Alert>
+        ) : (
+          <Alert variant="warning" className="d-flex flex-row justify-content-center align-items-center">
+            Belum Ada Ada Data Izin
+          </Alert>
+        )}
+      </div>
     </Container>
   );
 };

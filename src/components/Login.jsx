@@ -188,6 +188,7 @@ const Login = () => {
                   {usersTd.map((user) => (
                     <tr key={user.uuid}>
                       <td>{user.name}</td>
+                      <td>{user.izinData[0].ket}</td>
                     </tr>
                   ))}
                 </tbody>
