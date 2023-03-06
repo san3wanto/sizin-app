@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit"; //setting awal
-import authSlice from "../features/authSlice"; //setting awal
+import authSlice from "../features/authSlice.js"; //setting awal
 
+// import { createStore } from "redux";
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
-import thunk from "redux-thunk";
 
 const persistConfig = {
   key: "root",
@@ -11,12 +11,6 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, authSlice);
-
-export const store = configureStore({
-  reducer: persistedReducer,
-  devTools: process.env.NODE_ENV !== "production",
-  middleware: [thunk],
-});
 
 // setting awal
 // export const store = configureStore({
@@ -26,4 +20,8 @@ export const store = configureStore({
 // });
 //setting awal
 
-export const persistor = persistStore(store);
+export default () => {
+  let store = configureStore(persistedReducer);
+  let persistor = persistStore(store);
+  return { store, persistor };
+};
