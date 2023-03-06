@@ -186,6 +186,7 @@ const IzinList = () => {
             <thead>
               <tr>
                 <th>No</th>
+                {user && user === "admin" && <th>Nama</th>}
                 <th>Keterangan Izin</th>
                 <th>Dibuat</th>
                 <th>Waktu </th>
@@ -196,6 +197,7 @@ const IzinList = () => {
               {izin.map((izin, index) => (
                 <tr key={izin.uuid}>
                   <td datalabel=" ">{index + 1}</td>
+                  {user && user === "admin" && <td>{izin.name}</td>}
                   <td datalabel="Keterangan Izin" className="text-break">
                     {izin.ket}
                   </td>
