@@ -8,6 +8,7 @@ import thunk from "redux-thunk";
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["user"],
 };
 
 const persistedReducer = persistReducer(persistConfig, authReducer);
