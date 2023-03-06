@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import App from "./App";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { persistor, store } from "redux-persist/integration/react";
+import { persistor, store } from "./App/store";
 import { PersistGate } from "redux-persist/integration/react";
 
 axios.defaults.withCredentials = true;
