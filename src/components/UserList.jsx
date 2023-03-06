@@ -99,11 +99,11 @@ const UserList = () => {
             <tbody>
               {users.map((user, index) => (
                 <tr key={user.uuid} className="">
-                  <td datalabel="  ">{index + 1}</td>
-                  <td datalabel=" ">{user.name}</td>
+                  <td datalabel=" ">{index + 1}</td>
+                  <td datalabel="Nama">{user.name}</td>
                   <td datalabel="NIP">{user.nip}</td>
-                  <td datalabel="  ">{user.jab}</td>
-                  <td datalabel=" ">{user.email}</td>
+                  <td datalabel="Jabatan">{user.jab}</td>
+                  <td datalabel="Email">{user.email}</td>
                   <td datalabel="Role">{user.role}</td>
                   <td style={user.status === "Izin" ? { color: "red", fontWeight: "600" } : { color: "green", fontWeight: "600" }} datalabel="Status">
                     {user.status}
