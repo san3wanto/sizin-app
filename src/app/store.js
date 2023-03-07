@@ -1,12 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import authReducer from "../features/authSlice";
-// import storage from "redux-persist/lib/storage";
-import storageSession from "redux-persist/lib/storage/session";
+import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 
 const persistConfig = {
   key: process.env.NEXT_PUBLIC_FINGERPRINT_NAME || "arapaima_makan_ayam",
-  storageSession,
+  storage,
   whitelist: ["auth"],
 };
 
