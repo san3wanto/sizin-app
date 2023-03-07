@@ -4,7 +4,7 @@ import NavB from "../components/Navbar";
 const Layout = ({ children }) => {
   return (
     <React.Fragment>
-      <NavB />
+      {user && <NavB />}
       <div className="columns mt-6">
         <div className="column has-background-white">
           <main>{children}</main>
