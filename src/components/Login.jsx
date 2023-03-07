@@ -77,7 +77,7 @@ const Login = () => {
   };
 
   return (
-    <Container fluid>
+    <Container fluid className="w-100 pt-1 pb-2">
       <Navbar className="p-0" bg="primary" variant="white" sticky="top">
         <Container>
           <Navbar.Brand>
