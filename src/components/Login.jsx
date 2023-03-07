@@ -77,8 +77,8 @@ const Login = () => {
   };
 
   return (
-    <Container fluid>
-      <Navbar expand="lg" bg="primary" variant="white" sticky="top">
+    <div>
+      <Navbar className="p-0" bg="primary" variant="white" sticky="top">
         <Container>
           <Navbar.Brand>
             <img alt="logo bps palu" src={logo} style={{ width: "200px" }} />
@@ -223,7 +223,7 @@ const Login = () => {
           </Container>
         </div>
       </div>
-    </Container>
+    </div>
   );
 };
 
