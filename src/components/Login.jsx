@@ -78,7 +78,7 @@ const Login = () => {
 
   return (
     <Layout>
-      {/* <Navbar bg="primary" variant="white" fixed="top">
+      <Navbar bg="primary" variant="white" fixed="top">
         <Container>
           <Navbar.Brand>
             <img alt="logo bps palu" src={logo} style={{ width: "200px" }} />
@@ -90,8 +90,8 @@ const Login = () => {
             </Button>
           </Nav>
         </Container>
-      </Navbar> */}
-      <Container className="vh-100 vw-100  mt-6" style={{ backgroundColor: "grey" }}>
+      </Navbar>
+      <Container className="vh-100 vw-100 mt-6" style={{ backgroundColor: "grey" }}>
         <Modal show={show} onHide={handleClose} backdrop="static" centered>
           <Modal.Header className="d-flex flex-row justify-content-center">
             <img className="fluid" src={logo} alt="bps logo" width="200px" />
