@@ -78,7 +78,7 @@ const Login = () => {
 
   return (
     <Layout>
-      <Navbar bg="primary" variant="white" className="sticky-top">
+      <Navbar bg="primary" variant="white" className="fix-top">
         <Container>
           <Navbar.Brand>
             <img alt="logo bps palu" src={logo} style={{ width: "200px" }} />
