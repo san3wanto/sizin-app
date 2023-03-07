@@ -91,8 +91,6 @@ const Login = () => {
           </Nav>
         </Container>
       </Navbar>
-      <div className="columns mt-6">
-        <div className="column has-background-secondary">
           <Container>
             <Modal show={show} onHide={handleClose} backdrop="static" centered>
               <Modal.Header className="d-flex flex-row justify-content-center">
@@ -221,8 +219,6 @@ const Login = () => {
               </div>
             </div>
           </Container>
-        </div>
-      </div>
     </Layout>
   );
 };
