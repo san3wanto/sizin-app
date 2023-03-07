@@ -73,7 +73,7 @@ const IzinList = () => {
         )}
       </Modal>
       <div className="d-flex flex-column align-items-center mt-3">
-        <h2>Daftar Izin</h2>
+        <h2>Daftar Riwayat Izin Pegawai</h2>
       </div>
       <hr></hr>
       {/* <div className="d-flex flex-column align-items-center mx-5 my-2">

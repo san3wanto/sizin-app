@@ -69,7 +69,7 @@ const UserList = () => {
         )}
       </Modal>
       <div className="d-flex flex-column align-items-center mt-3">
-        <h2>Daftar User</h2>
+        <h2>Daftar Pegawai / User</h2>
       </div>
       <hr></hr>
       <div className="d-flex flex-column align-items-center mx-5 my-2">
