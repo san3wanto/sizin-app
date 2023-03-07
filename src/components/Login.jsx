@@ -77,7 +77,7 @@ const Login = () => {
   };
 
   return (
-    <Container fluid>
+    <Container fluid style={{ padding: "0" }}>
       <Navbar className="w-100" bg="primary" variant="white" sticky="top">
         <Container>
           <Navbar.Brand>
