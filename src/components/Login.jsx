@@ -77,7 +77,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <Container>
       <Navbar className="p-0" bg="primary" variant="white" sticky="top">
         <Container>
           <Navbar.Brand>
@@ -223,7 +223,7 @@ const Login = () => {
           </Container>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 
