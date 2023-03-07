@@ -90,8 +90,8 @@ const Login = () => {
           </Nav>
         </Container>
       </Navbar>
-      <div className="columns mt-6">
-        <div className="column has-background-secondary">
+      <div className="columns mt-6" style={{ backgroundColor: "grey" }}>
+        <div className="column">
           <Container>
             <Modal show={show} onHide={handleClose} backdrop="static" centered>
               <Modal.Header className="d-flex flex-row justify-content-center">
