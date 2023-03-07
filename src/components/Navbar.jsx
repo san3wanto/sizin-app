@@ -17,7 +17,7 @@ const NavB = () => {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="primary" variant="white" fixed="sticky">
+    <Navbar collapseOnSelect expand="lg" bg="primary" variant="white" sticky="top">
       <Container>
         <Navbar.Brand>
           <img alt="logo bps palu" src={logo} style={{ width: "200px" }} />
@@ -41,8 +41,8 @@ const NavB = () => {
                 Riwayat Izin
               </Link>
             )}
-            <NavDropdown title={`${user && user.name} (${user && user.role})`} id="collasible-nav-dropdown" className="d-flex flex-column align-items-center rounded mx-2 p-1 bg-white">
-              <NavDropdown.Item className="d-flex justify-content-center rounded p-1 text-danger font-weight-bold" onClick={logout}>
+            <NavDropdown title={`${user && user.name} (${user && user.role})`} id="collasible-nav-dropdown" className="">
+              <NavDropdown.Item className="" onClick={logout}>
                 Logout
               </NavDropdown.Item>
             </NavDropdown>
