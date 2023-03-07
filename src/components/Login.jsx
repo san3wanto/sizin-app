@@ -61,8 +61,8 @@ const Login = () => {
   // console.log(loading);
   // console.log(users[1].izin[1].ket);
   // console.log(users[1].izin[1].status);
-  console.log(usersAd);
-  console.log(usersTd);
+  // console.log(usersAd);
+  // console.log(usersTd);
 
   useEffect(() => {
     if (user || isSuccess) {
