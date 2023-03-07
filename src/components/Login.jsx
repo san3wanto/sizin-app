@@ -90,7 +90,7 @@ const Login = () => {
           </Nav>
         </Container>
       </Navbar>
-      <div className="columns mt-6 vh-100" style={{ backgroundColor: "grey" }}>
+      <div className="columns vh-100" style={{ backgroundColor: "grey", top: "500px" }}>
         <div className="column">
           <Container>
             <Modal show={show} onHide={handleClose} backdrop="static" centered>
