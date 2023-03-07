@@ -113,8 +113,8 @@ const Login = () => {
                       </InputGroup.Text>
                     </InputGroup>
                   </Form.Group>
-                  <Alert className="d-flex flex-column justify-content-center align-items-center" variant={isError ? "danger" : "light"}>
-                    {isError ? message : "Masukkan Username dan Password Anda"}
+                  <Alert className="d-flex flex-row justify-content-center" variant={isError ? "danger" : "light"}>
+                    {isError ? message : "Masukkan Username dan Password"}
                   </Alert>
                   {isLoading ? (
                     <div>
