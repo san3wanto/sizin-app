@@ -77,7 +77,7 @@ const Login = () => {
   };
 
   return (
-    <Layout>
+    <Container fluid>
       <Navbar className="p-0" bg="primary" variant="white" sticky="top">
         <Container>
           <Navbar.Brand>
@@ -91,6 +91,8 @@ const Login = () => {
           </Nav>
         </Container>
       </Navbar>
+      <div className="columns mt-6">
+        <div className="column has-background-secondary">
           <Container>
             <Modal show={show} onHide={handleClose} backdrop="static" centered>
               <Modal.Header className="d-flex flex-row justify-content-center">
@@ -219,7 +221,9 @@ const Login = () => {
               </div>
             </div>
           </Container>
-    </Layout>
+        </div>
+      </div>
+    </Container>
   );
 };
 
