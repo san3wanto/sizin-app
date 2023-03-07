@@ -90,7 +90,7 @@ const Login = () => {
           </Nav>
         </Container>
       </Navbar>
-      <div className="columns vh-100" style={{ backgroundColor: "grey", height: "500px" }}>
+      <div className="columns vh-100" style={{ backgroundColor: "grey" }}>
         <div className="column">
           <Container>
             <Modal show={show} onHide={handleClose} backdrop="static" centered>
@@ -113,7 +113,7 @@ const Login = () => {
                       </InputGroup.Text>
                     </InputGroup>
                   </Form.Group>
-                  <Alert className="d-flex flex-row justify-content-center" variant={isError ? "danger" : "light"}>
+                  <Alert className="d-flex flex-column justify-content-center align-items-center" variant={isError ? "danger" : "light"}>
                     {isError ? message : "Masukkan Username dan Password Anda"}
                   </Alert>
                   {isLoading ? (
