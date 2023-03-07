@@ -77,7 +77,7 @@ const Login = () => {
   };
 
   return (
-    <Container>
+    <Container fluid className="d-flex">
       <Navbar className="p-0" bg="primary" variant="white" sticky="top">
         <Container>
           <Navbar.Brand>
