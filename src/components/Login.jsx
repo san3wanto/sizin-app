@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { LoginUser, reset } from "../features/authSlice";
 import { Button, Container, Form, InputGroup, Navbar, Nav, Modal, Spinner, Table, Badge, Alert, Accordion } from "react-bootstrap";
 import logo from "../bps.png";
-import Layout from "../Pages/Layout";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -155,7 +154,7 @@ const Login = () => {
                 </div>
                 <hr></hr>
                 {usersAd.length !== 0 ? (
-                  <Table responsive striped="column">
+                  <Table responsive striped="row">
                     <tbody>
                       {usersAd.map((user) => (
                         <tr key={user.uuid}>
@@ -187,7 +186,7 @@ const Login = () => {
                 </div>
                 <hr></hr>
                 {usersTd.length !== 0 ? (
-                  <Table responsive striped="column">
+                  <Table responsive striped="row">
                     <tbody>
                       {usersTd.map((user) => (
                         <tr key={user.uuid}>
