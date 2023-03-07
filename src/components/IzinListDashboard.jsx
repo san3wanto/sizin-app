@@ -81,7 +81,7 @@ const IzinList = () => {
           <Modal.Footer>
             <Button variant="primary" disabled>
               <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
-              {console.log(loading)}
+              {/* {console.log(loading)} */}
               Memproses...
             </Button>
             <Button variant="danger" disabled>
