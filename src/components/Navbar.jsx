@@ -17,7 +17,7 @@ const NavB = () => {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="primary" variant="white" fixed="top" className="mb-5">
+    <Navbar collapseOnSelect expand="lg" bg="primary" variant="white" fixed="sticky">
       <Container>
         <Navbar.Brand>
           <img alt="logo bps palu" src={logo} style={{ width: "200px" }} />
