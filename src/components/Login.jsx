@@ -77,7 +77,7 @@ const Login = () => {
   };
 
   return (
-    <Layout>
+    <Container>
       <Navbar bg="primary" variant="white" fixed="top">
         <Container>
           <Navbar.Brand>
@@ -91,135 +91,139 @@ const Login = () => {
           </Nav>
         </Container>
       </Navbar>
-      <Container className="vh-100 vw-100 mt-6" style={{ backgroundColor: "grey" }}>
-        <Modal show={show} onHide={handleClose} backdrop="static" centered>
-          <Modal.Header className="d-flex flex-row justify-content-center">
-            <img className="fluid" src={logo} alt="bps logo" width="200px" />
-          </Modal.Header>
-          <Modal.Body>
-            <Form onSubmit={Auth} className="mt-lg-5 mb-lg-5">
-              {isError}
-              <Form.Group className="mb-3 mt-3" controlId="formBasicUsername">
-                <Form.Label className="fw-bold">Username</Form.Label>
-                <Form.Control type="text" className="input" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label className="fw-bold">Password</Form.Label>
-                <InputGroup>
-                  <Form.Control type={passwordShown ? "text" : "password"} className="input mr-2" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-                  <InputGroup.Text>
-                    <box-icon type="solid" name={passwordShown ? "show" : "hide"} size="md color" onClick={togglePassword}></box-icon>
-                  </InputGroup.Text>
-                </InputGroup>
-              </Form.Group>
-              <Alert className="d-flex flex-row justify-content-center" variant={isError ? "danger" : "light"}>
-                {isError ? message : "Masukkan Username dan Password Anda"}
-              </Alert>
-              {isLoading ? (
-                <div>
-                  <Button variant="primary" className="d-flex w-100 justify-content-center mb-2" disabled>
-                    <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
-                    Memproses...
-                  </Button>
-                  <Button variant="secondary" className="d-flex w-100 justify-content-center" disabled>
-                    Kembali
-                  </Button>
-                </div>
-              ) : (
-                <div>
-                  <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center mb-2">
-                    Masuk
-                  </Button>
-                  <Button variant="secondary" className="d-flex w-100 justify-content-center" onClick={handleClose}>
-                    Kembali
-                  </Button>
-                </div>
-              )}
-            </Form>
-          </Modal.Body>
-        </Modal>
-        {/* <Card style={{ borderRadius: "1.5rem" }} className="d-flex align-items-center justify-content-center p-5">
+      <div className="columns mt-6">
+        <div className="column has-background-secondary">
+          <Container className="vh-100 vw-100">
+            <Modal show={show} onHide={handleClose} backdrop="static" centered>
+              <Modal.Header className="d-flex flex-row justify-content-center">
+                <img className="fluid" src={logo} alt="bps logo" width="200px" />
+              </Modal.Header>
+              <Modal.Body>
+                <Form onSubmit={Auth} className="mt-lg-5 mb-lg-5">
+                  {isError}
+                  <Form.Group className="mb-3 mt-3" controlId="formBasicUsername">
+                    <Form.Label className="fw-bold">Username</Form.Label>
+                    <Form.Control type="text" className="input" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label className="fw-bold">Password</Form.Label>
+                    <InputGroup>
+                      <Form.Control type={passwordShown ? "text" : "password"} className="input mr-2" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                      <InputGroup.Text>
+                        <box-icon type="solid" name={passwordShown ? "show" : "hide"} size="md color" onClick={togglePassword}></box-icon>
+                      </InputGroup.Text>
+                    </InputGroup>
+                  </Form.Group>
+                  <Alert className="d-flex flex-row justify-content-center" variant={isError ? "danger" : "light"}>
+                    {isError ? message : "Masukkan Username dan Password Anda"}
+                  </Alert>
+                  {isLoading ? (
+                    <div>
+                      <Button variant="primary" className="d-flex w-100 justify-content-center mb-2" disabled>
+                        <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
+                        Memproses...
+                      </Button>
+                      <Button variant="secondary" className="d-flex w-100 justify-content-center" disabled>
+                        Kembali
+                      </Button>
+                    </div>
+                  ) : (
+                    <div>
+                      <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center mb-2">
+                        Masuk
+                      </Button>
+                      <Button variant="secondary" className="d-flex w-100 justify-content-center" onClick={handleClose}>
+                        Kembali
+                      </Button>
+                    </div>
+                  )}
+                </Form>
+              </Modal.Body>
+            </Modal>
+            {/* <Card style={{ borderRadius: "1.5rem" }} className="d-flex align-items-center justify-content-center p-5">
           <div className="d-flex flex-column align-items-center w-50"></div>
         </Card> */}
-        <div className="d-flex flex-row justify-content-around flex-wrap">
-          <div className="card m-3 p-3" style={{ width: "30rem" }}>
-            <div className="d-flex flex-row justify-content-between align-items-end">
-              <h2>Sedang Di Kantor</h2>
-              <h5>
-                <Badge bg="dark">
-                  Jumlah <Badge bg="success">{`( ${usersAd.length} )`}</Badge>
-                </Badge>
-              </h5>
-            </div>
-            <hr></hr>
-            {usersAd.length !== 0 ? (
-              <Table responsive striped="column">
-                <tbody>
-                  {usersAd.map((user) => (
-                    <tr key={user.uuid}>
-                      <td>{user.name}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            ) : loading === true ? (
-              <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
-                <Spinner animation="border" variant="secondary" />
-                Memuat Data...
-              </Alert>
-            ) : (
-              <Alert variant="warning" className="d-flex flex-row justify-content-center">
-                Kemana semua pegawai?
-              </Alert>
-            )}
-          </div>
+            <div className="d-flex flex-row justify-content-around flex-wrap">
+              <div className="card m-3 p-3" style={{ width: "30rem" }}>
+                <div className="d-flex flex-row justify-content-between align-items-end">
+                  <h2>Sedang Di Kantor</h2>
+                  <h5>
+                    <Badge bg="dark">
+                      Jumlah <Badge bg="success">{`( ${usersAd.length} )`}</Badge>
+                    </Badge>
+                  </h5>
+                </div>
+                <hr></hr>
+                {usersAd.length !== 0 ? (
+                  <Table responsive striped="column">
+                    <tbody>
+                      {usersAd.map((user) => (
+                        <tr key={user.uuid}>
+                          <td>{user.name}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                ) : loading === true ? (
+                  <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
+                    <Spinner animation="border" variant="secondary" />
+                    Memuat Data...
+                  </Alert>
+                ) : (
+                  <Alert variant="warning" className="d-flex flex-row justify-content-center">
+                    Kemana semua pegawai?
+                  </Alert>
+                )}
+              </div>
 
-          <div className="m-3 p-3 card" style={{ width: "30rem" }}>
-            <div className="d-flex flex-row justify-content-between align-items-end">
-              <h2>Sedang Izin</h2>
-              <h5>
-                <Badge bg="dark">
-                  Jumlah <Badge bg="danger">{`( ${usersTd.length} )`}</Badge>
-                </Badge>
-              </h5>
+              <div className="m-3 p-3 card" style={{ width: "30rem" }}>
+                <div className="d-flex flex-row justify-content-between align-items-end">
+                  <h2>Sedang Izin</h2>
+                  <h5>
+                    <Badge bg="dark">
+                      Jumlah <Badge bg="danger">{`( ${usersTd.length} )`}</Badge>
+                    </Badge>
+                  </h5>
+                </div>
+                <hr></hr>
+                {usersTd.length !== 0 ? (
+                  <Table responsive striped="column">
+                    <tbody>
+                      {usersTd.map((user) => (
+                        <tr key={user.uuid}>
+                          <td>
+                            <Accordion flush>
+                              <Accordion.Item eventKey="0">
+                                <Accordion.Header>{user.name}</Accordion.Header>
+                                <Accordion.Body>
+                                  <p>
+                                    <strong>Keterangan Izin</strong>
+                                  </p>
+                                  <p>{user.izinData[0].ket}</p>
+                                </Accordion.Body>
+                              </Accordion.Item>
+                            </Accordion>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                ) : loading === true ? (
+                  <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
+                    <Spinner animation="border" variant="secondary" />
+                    Memuat Data...
+                  </Alert>
+                ) : (
+                  <Alert variant="info" className="d-flex flex-row justify-content-center">
+                    Tidak Ada Izin Tercatat
+                  </Alert>
+                )}
+              </div>
             </div>
-            <hr></hr>
-            {usersTd.length !== 0 ? (
-              <Table responsive striped="column">
-                <tbody>
-                  {usersTd.map((user) => (
-                    <tr key={user.uuid}>
-                      <td>
-                        <Accordion flush>
-                          <Accordion.Item eventKey="0">
-                            <Accordion.Header>{user.name}</Accordion.Header>
-                            <Accordion.Body>
-                              <p>
-                                <strong>Keterangan Izin</strong>
-                              </p>
-                              <p>{user.izinData[0].ket}</p>
-                            </Accordion.Body>
-                          </Accordion.Item>
-                        </Accordion>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            ) : loading === true ? (
-              <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
-                <Spinner animation="border" variant="secondary" />
-                Memuat Data...
-              </Alert>
-            ) : (
-              <Alert variant="info" className="d-flex flex-row justify-content-center">
-                Tidak Ada Izin Tercatat
-              </Alert>
-            )}
-          </div>
+          </Container>
         </div>
-      </Container>
-    </Layout>
+      </div>
+    </Container>
   );
 };
 

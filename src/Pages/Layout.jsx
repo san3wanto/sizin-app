@@ -1,6 +1,7 @@
 import React from "react";
 import NavB from "../components/Navbar";
 
+
 const Layout = ({ children }) => {
   return (
     <React.Fragment>
