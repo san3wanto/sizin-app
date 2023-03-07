@@ -78,7 +78,7 @@ const Login = () => {
 
   return (
     <Layout>
-      <Navbar bg="primary" variant="dark" fixed="top">
+      <Navbar bg="primary" variant="white" className="sticky-top">
         <Container>
           <Navbar.Brand>
             <img alt="logo bps palu" src={logo} style={{ width: "200px" }} />
@@ -168,7 +168,9 @@ const Login = () => {
                 Memuat Data...
               </Alert>
             ) : (
-              <Alert variant="warning">Kemana semua pegawai?</Alert>
+              <Alert variant="warning" className="d-flex flex-row justify-content-center">
+                Kemana semua pegawai?
+              </Alert>
             )}
           </div>
 
@@ -210,7 +212,9 @@ const Login = () => {
                 Memuat Data...
               </Alert>
             ) : (
-              <Alert variant="info">Tidak Ada Izin Tercatat</Alert>
+              <Alert variant="info" className="d-flex flex-row justify-content-center">
+                Tidak Ada Izin Tercatat
+              </Alert>
             )}
           </div>
         </div>
