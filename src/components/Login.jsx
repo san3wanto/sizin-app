@@ -93,7 +93,7 @@ const Login = () => {
       </Navbar>
       <div className="columns mt-6">
         <div className="column has-background-secondary">
-          <Container className="vh-100 vw-100">
+          <Container>
             <Modal show={show} onHide={handleClose} backdrop="static" centered>
               <Modal.Header className="d-flex flex-row justify-content-center">
                 <img className="fluid" src={logo} alt="bps logo" width="200px" />
