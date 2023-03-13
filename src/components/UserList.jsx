@@ -104,6 +104,7 @@ const UserList = () => {
                   <td datalabel="NIP">{user.nip}</td>
                   <td datalabel="Jabatan">{user.jab}</td>
                   <td datalabel="Email">{user.email}</td>
+                  <td datalabel="username">{user.username}</td>
                   <td datalabel="Role">{user.role}</td>
                   <td style={user.status === "Izin" ? { color: "red", fontWeight: "600" } : { color: "green", fontWeight: "600" }} datalabel="Status">
                     {user.status}

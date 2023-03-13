@@ -100,6 +100,8 @@ const FormEditUser = () => {
               <option value="Seksi Statistik Distribusi">Seksi Statistik Produksi</option>
               <option value="Seksi Neraca Wilayah dan Analisis Statistik">Seksi Neraca Wilayah dan Alalisis Statistik</option>
               <option value="Seksi Integrasi Pengolahan dan Diseminasi Statistik ">Seksi Integrasi Pengolahan dan Diseminasi Statistik</option>
+              <option value="Magang">Magang</option>
+              <option value="Lainnya">Lainnya...</option>
             </Form.Select>
           </Form.Group>
           <hr></hr>
