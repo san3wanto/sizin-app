@@ -91,7 +91,7 @@ const IzinList = () => {
   };
 
   console.log(usersAd);
-  console.log(usersAd.izinData[length]);
+  console.log(usersAd.izinData[usersAd.izinData.length]);
   // console.log(usersTd);
   // console.log(`Ini adalah ${user}`);
   // console.log(`Ini adalah ${izin}`);
