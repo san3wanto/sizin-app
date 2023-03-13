@@ -147,6 +147,58 @@ const Login = () => {
           <div className="d-flex flex-column align-items-center w-50"></div>
         </Card> */}
             <div className="d-flex flex-row justify-content-around flex-wrap">
+              <div className="m-3 p-3 card" style={{ width: "30rem" }}>
+                <div className="d-flex flex-row justify-content-between align-items-end">
+                  <h2>Sedang Izin</h2>
+                  <h5>
+                    <Badge bg="dark">
+                      Jumlah <Badge bg="danger">{`( ${usersTd.length} )`}</Badge>
+                    </Badge>
+                  </h5>
+                </div>
+                <hr></hr>
+                {usersTd.length !== 0 ? (
+                  <Table responsive striped="row">
+                    <tbody>
+                      {usersTd.map((user) => (
+                        <tr key={user.uuid}>
+                          <td>
+                            <Accordion flush>
+                              <Accordion.Item eventKey="0">
+                                <Accordion.Header>{user.name}</Accordion.Header>
+                                <Accordion.Body>
+                                  <Row>
+                                    <Col>
+                                      <strong>Keterangan</strong>
+                                    </Col>
+                                    <Col>{user.izinData[0].ket}</Col>
+                                  </Row>
+                                  <Row>
+                                    <Col>
+                                      <strong>Dibuat</strong>
+                                    </Col>
+                                    <Col>{`${dayjs(user.izinData[0].createdAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
+                                  </Row>
+                                </Accordion.Body>
+                              </Accordion.Item>
+                            </Accordion>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                ) : loading === true ? (
+                  <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
+                    <Spinner animation="border" variant="secondary" />
+                    Memuat Data...
+                  </Alert>
+                ) : (
+                  <Alert variant="info" className="d-flex flex-row justify-content-center">
+                    Tidak Ada Izin Tercatat
+                  </Alert>
+                )}
+              </div>
+
               <div className="card m-3 p-3" style={{ width: "30rem" }}>
                 <div className="d-flex flex-row justify-content-between align-items-end">
                   <h2>Sedang Di Kantor</h2>
@@ -175,9 +227,9 @@ const Login = () => {
                                   </Row>
                                   <Row>
                                     <Col>
-                                      <strong>Waktu Selesai</strong>
+                                      <strong>Selesai</strong>
                                     </Col>
-                                    <Col>{`${dayjs(user.izinData[0].updatedAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</Col>
+                                    <Col>{`${dayjs(user.izinData[0].updatedAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
                                   </Row>
                                 </Accordion.Body>
                               </Accordion.Item>
@@ -195,58 +247,6 @@ const Login = () => {
                 ) : (
                   <Alert variant="warning" className="d-flex flex-row justify-content-center">
                     Kemana semua pegawai?
-                  </Alert>
-                )}
-              </div>
-
-              <div className="m-3 p-3 card" style={{ width: "30rem" }}>
-                <div className="d-flex flex-row justify-content-between align-items-end">
-                  <h2>Sedang Izin</h2>
-                  <h5>
-                    <Badge bg="dark">
-                      Jumlah <Badge bg="danger">{`( ${usersTd.length} )`}</Badge>
-                    </Badge>
-                  </h5>
-                </div>
-                <hr></hr>
-                {usersTd.length !== 0 ? (
-                  <Table responsive striped="row">
-                    <tbody>
-                      {usersTd.map((user) => (
-                        <tr key={user.uuid}>
-                          <td>
-                            <Accordion flush>
-                              <Accordion.Item eventKey="0">
-                                <Accordion.Header>{user.name}</Accordion.Header>
-                                <Accordion.Body>
-                                  <Row>
-                                    <Col>
-                                      <strong>Keterangan Izin</strong>
-                                    </Col>
-                                    <Col>{user.izinData[0].ket}</Col>
-                                  </Row>
-                                  <Row>
-                                    <Col>
-                                      <strong>Dibuat</strong>
-                                    </Col>
-                                    <Col>{`${dayjs(user.izinData[0].createdAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</Col>
-                                  </Row>
-                                </Accordion.Body>
-                              </Accordion.Item>
-                            </Accordion>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </Table>
-                ) : loading === true ? (
-                  <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
-                    <Spinner animation="border" variant="secondary" />
-                    Memuat Data...
-                  </Alert>
-                ) : (
-                  <Alert variant="info" className="d-flex flex-row justify-content-center">
-                    Tidak Ada Izin Tercatat
                   </Alert>
                 )}
               </div>
