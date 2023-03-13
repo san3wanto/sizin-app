@@ -84,12 +84,15 @@ const IzinList = () => {
     await axios.patch(`https://sizin-server.herokuapp.com/izin/${izinId}/finish`);
     getUsers();
     getIzin();
+    getUsersAda();
+    getUserIzin();
     setShow(false);
     setLoading(false);
   };
 
   console.log(usersAd);
-  console.log(usersTd);
+  console.log(usersAd.izinData[length]);
+  // console.log(usersTd);
   // console.log(`Ini adalah ${user}`);
   // console.log(`Ini adalah ${izin}`);
   // console.log(`Sedang loading adalah ${loading}`);
@@ -221,11 +224,11 @@ const IzinList = () => {
                           <Accordion.Item eventKey="0">
                             <Accordion.Header>{user.name}</Accordion.Header>
                             <Accordion.Body>
-                              <Row>
-                                <Col>
+                              <Row classname="bg-secondary">
+                                <Col classname="bg-secondary">
                                   <strong>Keterangan</strong>
                                 </Col>
-                                <Col>{user.izinData[0].ket}</Col>
+                                <Col classname="bg-secondary">{user.izinData[0].ket}</Col>
                               </Row>
                               <Row>
                                 <Col>
@@ -273,11 +276,11 @@ const IzinList = () => {
                           <Accordion.Item eventKey="0">
                             <Accordion.Header>{user.name}</Accordion.Header>
                             <Accordion.Body>
-                              <Row>
-                                <Col>
+                              <Row classname="bg-secondary">
+                                <Col classname="bg-secondary">
                                   <strong>Riwayat</strong>
                                 </Col>
-                                <Col>{user.izinData[0].ket}</Col>
+                                <Col classname="bg-secondary">{user.izinData[0].ket}</Col>
                               </Row>
                               <Row>
                                 <Col>
