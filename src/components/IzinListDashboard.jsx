@@ -163,6 +163,66 @@ const IzinList = () => {
           </div>
         </div>
       )}
+
+      <div>
+        <div className="d-flex flex-row justify-content-around flex-wrap">
+          <div className="card m-3 p-3" style={{ width: "30rem" }}>
+            <div className="d-flex flex-row justify-content-between align-items-end">
+              <h2>Sedang Di Kantor</h2>
+              <h5>
+                <Badge bg="dark">
+                  Jumlah <Badge bg="success">{`( ${Tersedia.length} )`}</Badge>
+                </Badge>
+              </h5>
+            </div>
+            <hr></hr>
+            <Table responsive striped="columns">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Tersedia.map((user, index) => (
+                  <tr key={user.uuid}>
+                    <td datalabel="No">{index + 1}</td>
+                    <td datalabel="Nama">{user.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+
+          <div className="m-3 p-3 card" style={{ width: "30rem" }}>
+            <div className="d-flex flex-row justify-content-between align-items-end">
+              <h2>Sedang Izin</h2>
+              <h5>
+                <Badge bg="dark">
+                  Jumlah <Badge bg="danger">{`( ${Izin.length} )`}</Badge>
+                </Badge>
+              </h5>
+            </div>
+            <hr></hr>
+            <Table responsive striped="columns">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Izin.map((user, index) => (
+                  <tr key={user.uuid}>
+                    <td datalabel="No">{index + 1}</td>
+                    <td datalabel="Nama">{user.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        </div>
+      </div>
     </Container>
   );
 };
