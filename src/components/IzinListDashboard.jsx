@@ -223,13 +223,13 @@ const IzinList = () => {
                                 <Col>
                                   <strong>Keterangan</strong>
                                 </Col>
-                                <Col>{user.izinData[izinData.length].ket}</Col>
+                                <Col>{user.izinData[user.izinData.length].ket}</Col>
                               </Row>
                               <Row>
                                 <Col>
                                   <strong>Dibuat</strong>
                                 </Col>
-                                <Col>{`${dayjs(user.izinData[izinData.length].createdAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
+                                <Col>{`${dayjs(user.izinData[user.izinData.length].createdAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
                               </Row>
                             </Accordion.Body>
                           </Accordion.Item>
@@ -275,13 +275,13 @@ const IzinList = () => {
                                 <Col>
                                   <strong>Riwayat</strong>
                                 </Col>
-                                <Col>{user.izinData[izinData.length].ket}</Col>
+                                <Col>{user.izinData[user.izinData.length].ket}</Col>
                               </Row>
                               <Row>
                                 <Col>
                                   <strong>Selesai</strong>
                                 </Col>
-                                <Col>{`${dayjs(user.izinData[izinData.length].updatedAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
+                                <Col>{`${dayjs(user.user.izinData[izinData.length].updatedAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
                               </Row>
                             </Accordion.Body>
                           </Accordion.Item>
