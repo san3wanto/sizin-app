@@ -235,7 +235,7 @@ const IzinList = () => {
                                 <Col>
                                   <strong>Dibuat</strong>
                                 </Col>
-                                <Col>{`${dayjs(user.izinData[0].createdAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
+                                <Col>{`${dayjs(user.izinData[0].createdAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col>
                               </Row>
                             </Accordion.Body>
                           </Accordion.Item>
@@ -288,7 +288,7 @@ const IzinList = () => {
                                 <Col>
                                   <strong>Selesai</strong>
                                 </Col>
-                                <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
+                                <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col>
                                 {/* {console.log(user.izinData[user.izinData.length - 1])} */}
                               </Row>
                             </Accordion.Body>
