@@ -274,7 +274,6 @@ const IzinList = () => {
                     <tr key={user.uuid}>
                       <td>
                         <Accordion flush>
-                          {user.name}
                           <Accordion.Item eventKey="0">
                             <Accordion.Header>{user.name}</Accordion.Header>
                             <Accordion.Body>
