@@ -23,6 +23,10 @@ const Login = () => {
 
   const togglePassword = () => setPasswordShown(!passwordShown);
 
+  const dayjs = require("dayjs");
+  require("dayjs/locale/id");
+  dayjs.locale("id");
+
   useEffect(() => {
     getUsersAda();
   }, []);
@@ -165,23 +169,15 @@ const Login = () => {
                                 <Accordion.Body>
                                   <Row>
                                     <Col>
-                                      <p>
-                                        <strong>Izin Terakhir</strong>
-                                      </p>
+                                      <strong>Izin Terakhir</strong>
                                     </Col>
-                                    <Col>
-                                      <p>{user.izinData[0].ket}</p>
-                                    </Col>
+                                    <Col>{user.izinData[0].ket}</Col>
                                   </Row>
                                   <Row>
                                     <Col>
-                                      <p>
-                                        <strong>Waktu Selesai</strong>
-                                      </p>
+                                      <strong>Waktu Selesai</strong>
                                     </Col>
-                                    <Col>
-                                      <p>{user.izinData[0].updatedAt}</p>
-                                    </Col>
+                                    <Col>{`${dayjs(user.izinData[0].updatedAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</Col>
                                   </Row>
                                 </Accordion.Body>
                               </Accordion.Item>
@@ -225,23 +221,15 @@ const Login = () => {
                                 <Accordion.Body>
                                   <Row>
                                     <Col>
-                                      <p>
-                                        <strong>Keterangan Izin</strong>
-                                      </p>
+                                      <strong>Keterangan Izin</strong>
                                     </Col>
-                                    <Col>
-                                      <p>{user.izinData[0].ket}</p>
-                                    </Col>
+                                    <Col>{user.izinData[0].ket}</Col>
                                   </Row>
                                   <Row>
                                     <Col>
-                                      <p>
-                                        <strong>Dibuat</strong>
-                                      </p>
+                                      <strong>Dibuat</strong>
                                     </Col>
-                                    <Col>
-                                      <p>{user.izinData[0].createdAt}</p>
-                                    </Col>
+                                    <Col>{`${dayjs(user.izinData[0].createdAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</Col>
                                   </Row>
                                 </Accordion.Body>
                               </Accordion.Item>
