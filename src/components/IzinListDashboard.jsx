@@ -274,9 +274,8 @@ const IzinList = () => {
                     <tr key={user.uuid}>
                       <td>
                         <Accordion flush>
-                          <Accordion.Item eventKey="0">
-                            <Accordion.Header>{user.name}</Accordion.Header>
-                            {/* <Accordion.Body>
+                          <Accordion.Header>{user.name}</Accordion.Header>
+                          {/* <Accordion.Body>
                               <Row classname="bg-secondary">
                                 <Col classname="bg-secondary">
                                   <strong>Riwayat</strong>
@@ -292,7 +291,6 @@ const IzinList = () => {
                                 {console.log(user.izinData[user.izinData.length - 1])}
                               </Row>
                             </Accordion.Body> */}
-                          </Accordion.Item>
                         </Accordion>
                       </td>
                     </tr>
