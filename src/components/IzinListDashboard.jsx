@@ -91,7 +91,7 @@ const IzinList = () => {
   };
 
   console.log(usersAd);
-  console.log(usersAd.izinData[usersAd.izinData.length]);
+  console.log(usersAd[0].izinData[usersAd[0].izinData.length]);
   // console.log(usersTd);
   // console.log(`Ini adalah ${user}`);
   // console.log(`Ini adalah ${izin}`);
@@ -230,6 +230,7 @@ const IzinList = () => {
                                 </Col>
                                 <Col classname="bg-secondary">{user.izinData[0].ket}</Col>
                               </Row>
+                              <hr></hr>
                               <Row>
                                 <Col>
                                   <strong>Dibuat</strong>
@@ -282,6 +283,7 @@ const IzinList = () => {
                                 </Col>
                                 <Col classname="bg-secondary">{user.izinData[0].ket}</Col>
                               </Row>
+                              <hr></hr>
                               <Row>
                                 <Col>
                                   <strong>Selesai</strong>
