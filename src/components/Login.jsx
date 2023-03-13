@@ -219,21 +219,21 @@ const Login = () => {
                             <Accordion flush>
                               <Accordion.Item eventKey="0">
                                 <Accordion.Header>{user.name}</Accordion.Header>
-                                <Accordion.Body>
+                                {/* <Accordion.Body>
                                   <Row>
                                     <Col>
                                       <strong>Riwayat</strong>
                                     </Col>
-                                    {/* <Col>{user.izinData[user.izinData.length - 1].ket}</Col> */}
+                                    <Col>{user.izinData[user.izinData.length - 1].ket}</Col>
                                   </Row>
                                   <hr></hr>
                                   <Row>
                                     <Col>
                                       <strong>Selesai</strong>
                                     </Col>
-                                    {/* <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col> */}
+                                    <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col>
                                   </Row>
-                                </Accordion.Body>
+                                </Accordion.Body> */}
                               </Accordion.Item>
                             </Accordion>
                           </td>

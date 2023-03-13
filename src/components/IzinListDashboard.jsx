@@ -276,7 +276,7 @@ const IzinList = () => {
                         <Accordion flush>
                           <Accordion.Item eventKey="0">
                             <Accordion.Header>{user.name}</Accordion.Header>
-                            <Accordion.Body>
+                            {/* <Accordion.Body>
                               <Row classname="bg-secondary">
                                 <Col classname="bg-secondary">
                                   <strong>Riwayat</strong>
@@ -289,9 +289,9 @@ const IzinList = () => {
                                   <strong>Selesai</strong>
                                 </Col>
                                 <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col>
-                                {/* {console.log(user.izinData[user.izinData.length - 1])} */}
+                                {console.log(user.izinData[user.izinData.length - 1])}
                               </Row>
-                            </Accordion.Body>
+                            </Accordion.Body> */}
                           </Accordion.Item>
                         </Accordion>
                       </td>
