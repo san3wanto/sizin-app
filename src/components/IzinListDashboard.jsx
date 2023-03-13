@@ -119,12 +119,14 @@ const IzinList = () => {
 
       {user && user.role === "user" && (
         <div>
-          <div className="d-flex flex-column align-items-center mt-3">
-            <h2>Riwayat Izin</h2>
-          </div>
           <Accordion flush>
             <Accordion.Item eventKey="0">
-              <Accordion.Header>Riwayat Izin</Accordion.Header>
+              <Accordion.Header>
+                {" "}
+                <div className="d-flex flex-column align-items-center mt-3">
+                  <h2>Riwayat Izin</h2>
+                </div>
+              </Accordion.Header>
               <Accordion.Body>
                 <div className="mx-2">
                   {izin.length !== 0 ? (
