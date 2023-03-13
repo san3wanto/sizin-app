@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Container, Table, Button, Badge, Modal, Spinner, Alert, Accordion } from "react-bootstrap";
+import { Container, Table, Button, Badge, Modal, Spinner, Alert, Accordion, Col, Row } from "react-bootstrap";
 import "bootstrap";
 
 const dayjs = require("dayjs");
@@ -15,6 +15,8 @@ const IzinList = () => {
   const [izin, setIzin] = useState([]);
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [usersAd, setUsersAd] = useState([]);
+  const [usersTd, setUsersTd] = useState([]);
 
   const handleClose = () => {
     setShow(false);
@@ -31,6 +33,28 @@ const IzinList = () => {
   useEffect(() => {
     getIzin();
   }, []);
+
+  useEffect(() => {
+    getUsersAda();
+  }, []);
+
+  useEffect(() => {
+    getUserIzin();
+  }, []);
+
+  const getUsersAda = async () => {
+    setLoading(true);
+    const response = await axios.get("https://sizin-server.herokuapp.com/users/ad");
+    setUsersAd(response.data);
+    setLoading(false);
+  };
+
+  const getUserIzin = async () => {
+    setLoading(true);
+    const response = await axios.get("https://sizin-server.herokuapp.com/users/td");
+    setUsersTd(response.data);
+    setLoading(false);
+  };
 
   const getIzin = async () => {
     const response = await axios.get("https://sizin-server.herokuapp.com/izin");
@@ -116,7 +140,7 @@ const IzinList = () => {
         )}
         <hr></hr>
       </div>
-      
+
       <div>
         <div className="d-flex flex-row justify-content-around flex-wrap">
           <div className="card m-3 p-3" style={{ width: "30rem" }}>
@@ -173,6 +197,110 @@ const IzinList = () => {
                 ))}
               </tbody>
             </Table>
+          </div>
+
+          <div className="m-3 p-3 card" style={{ width: "30rem" }}>
+            <div className="d-flex flex-row justify-content-between align-items-end">
+              <h2>Sedang Izin</h2>
+              <h5>
+                <Badge bg="dark">
+                  Jumlah <Badge bg="danger">{`( ${usersTd.length} )`}</Badge>
+                </Badge>
+              </h5>
+            </div>
+            <hr></hr>
+            {usersTd.length !== 0 ? (
+              <Table responsive striped="row">
+                <tbody>
+                  {usersTd.map((user) => (
+                    <tr key={user.uuid}>
+                      <td>
+                        <Accordion flush>
+                          <Accordion.Item eventKey="0">
+                            <Accordion.Header>{user.name}</Accordion.Header>
+                            <Accordion.Body>
+                              <Row>
+                                <Col>
+                                  <strong>Keterangan</strong>
+                                </Col>
+                                <Col>{user.izinData[0].ket}</Col>
+                              </Row>
+                              <Row>
+                                <Col>
+                                  <strong>Dibuat</strong>
+                                </Col>
+                                <Col>{`${dayjs(user.izinData[0].createdAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
+                              </Row>
+                            </Accordion.Body>
+                          </Accordion.Item>
+                        </Accordion>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            ) : loading === true ? (
+              <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
+                <Spinner animation="border" variant="secondary" />
+                Memuat Data...
+              </Alert>
+            ) : (
+              <Alert variant="info" className="d-flex flex-row justify-content-center">
+                Tidak Ada Izin Tercatat
+              </Alert>
+            )}
+          </div>
+
+          <div className="card m-3 p-3" style={{ width: "30rem" }}>
+            <div className="d-flex flex-row justify-content-between align-items-end">
+              <h2>Sedang Di Kantor</h2>
+              <h5>
+                <Badge bg="dark">
+                  Jumlah <Badge bg="success">{`( ${usersAd.length} )`}</Badge>
+                </Badge>
+              </h5>
+            </div>
+            <hr></hr>
+            {usersAd.length !== 0 ? (
+              <Table responsive striped="row">
+                <tbody>
+                  {usersAd.map((user) => (
+                    <tr key={user.uuid}>
+                      <td>
+                        <Accordion flush>
+                          <Accordion.Item eventKey="0">
+                            <Accordion.Header>{user.name}</Accordion.Header>
+                            <Accordion.Body>
+                              <Row>
+                                <Col>
+                                  <strong>Izin Terakhir</strong>
+                                </Col>
+                                <Col>{user.izinData[0].ket}</Col>
+                              </Row>
+                              <Row>
+                                <Col>
+                                  <strong>Selesai</strong>
+                                </Col>
+                                <Col>{`${dayjs(user.izinData[0].updatedAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
+                              </Row>
+                            </Accordion.Body>
+                          </Accordion.Item>
+                        </Accordion>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            ) : loading === true ? (
+              <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
+                <Spinner animation="border" variant="secondary" />
+                Memuat Data...
+              </Alert>
+            ) : (
+              <Alert variant="warning" className="d-flex flex-row justify-content-center">
+                Kemana semua pegawai?
+              </Alert>
+            )}
           </div>
         </div>
       </div>
