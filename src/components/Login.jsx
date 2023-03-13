@@ -231,7 +231,7 @@ const Login = () => {
                                     <Col>
                                       <strong>Selesai</strong>
                                     </Col>
-                                    <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col>
+                                    <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD-MM-YYYY")}`}</Col>
                                   </Row>
                                 </Accordion.Body>
                               </Accordion.Item>

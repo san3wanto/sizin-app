@@ -235,7 +235,7 @@ const IzinList = () => {
                                 <Col>
                                   <strong>Dibuat</strong>
                                 </Col>
-                                <Col>{`${dayjs(user.izinData[0].createdAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col>
+                                <Col>{`${dayjs(user.izinData[0].createdAt).format("HH:mm - dddd, DD-MM-YYYY")}`}</Col>
                               </Row>
                             </Accordion.Body>
                           </Accordion.Item>
@@ -273,11 +273,7 @@ const IzinList = () => {
                   {usersAd.map((user) => (
                     <tr key={user.uuid}>
                       <td>
-                        <Row>
-                          <Col>{user.name}</Col>
-                          <Col>{user.jab}</Col>
-                        </Row>
-                        {/* <Accordion flush>
+                        <Accordion flush>
                           {user.name}
                           <Accordion.Item eventKey="0">
                             <Accordion.Header>{user.name}</Accordion.Header>
@@ -293,12 +289,12 @@ const IzinList = () => {
                                 <Col>
                                   <strong>Selesai</strong>
                                 </Col>
-                                <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col>
+                                <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD-MM-YYYY")}`}</Col>
                                 {console.log(user.izinData[user.izinData.length - 1])}
                               </Row>
                             </Accordion.Body>
                           </Accordion.Item>
-                        </Accordion> */}
+                        </Accordion>
                       </td>
                     </tr>
                   ))}
