@@ -224,15 +224,14 @@ const Login = () => {
                                     <Col>
                                       <strong>Riwayat</strong>
                                     </Col>
-                                    <Col>{!user.izinData[user.izinData.length - 1] ? "Tidak Ada" : `${user.izinData[user.izinData.length - 1].ket}`}</Col>
+                                    <Col>{user.izinData[user.izinData.length - 1].ket}</Col>
                                   </Row>
                                   <hr></hr>
                                   <Row>
                                     <Col>
                                       <strong>Selesai</strong>
                                     </Col>
-                                    <Col>{!user.izinData[user.izinData.length - 1] ? "Tidak Ada" : `${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col>
-                                    {/* <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col> */}
+                                    <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col>
                                   </Row>
                                 </Accordion.Body>
                               </Accordion.Item>
