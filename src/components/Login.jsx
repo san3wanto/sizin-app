@@ -158,7 +158,35 @@ const Login = () => {
                     <tbody>
                       {usersAd.map((user) => (
                         <tr key={user.uuid}>
-                          <td>{user.name}</td>
+                          <td>
+                            <Accordion flush>
+                              <Accordion.Item eventKey="0">
+                                <Accordion.Header>{user.name}</Accordion.Header>
+                                <Accordion.Body>
+                                  <Row>
+                                    <Col>
+                                      <p>
+                                        <strong>Izin Terakhir</strong>
+                                      </p>
+                                    </Col>
+                                    <Col>
+                                      <p>{user.izinData[0].ket}</p>
+                                    </Col>
+                                  </Row>
+                                  <Row>
+                                    <Col>
+                                      <p>
+                                        <strong>Waktu Selesai</strong>
+                                      </p>
+                                    </Col>
+                                    <Col>
+                                      <p>{user.izinData[0].updatedAt}</p>
+                                    </Col>
+                                  </Row>
+                                </Accordion.Body>
+                              </Accordion.Item>
+                            </Accordion>
+                          </td>
                         </tr>
                       ))}
                     </tbody>
@@ -195,10 +223,26 @@ const Login = () => {
                               <Accordion.Item eventKey="0">
                                 <Accordion.Header>{user.name}</Accordion.Header>
                                 <Accordion.Body>
-                                  <p>
-                                    <strong>Keterangan Izin</strong>
-                                  </p>
-                                  <p>{user.izinData[0].ket}</p>
+                                  <Row>
+                                    <Col>
+                                      <p>
+                                        <strong>Keterangan Izin</strong>
+                                      </p>
+                                    </Col>
+                                    <Col>
+                                      <p>{user.izinData[0].ket}</p>
+                                    </Col>
+                                  </Row>
+                                  <Row>
+                                    <Col>
+                                      <p>
+                                        <strong>Dibuat</strong>
+                                      </p>
+                                    </Col>
+                                    <Col>
+                                      <p>{user.izinData[0].createdAt}</p>
+                                    </Col>
+                                  </Row>
                                 </Accordion.Body>
                               </Accordion.Item>
                             </Accordion>

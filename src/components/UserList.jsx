@@ -91,6 +91,7 @@ const UserList = () => {
                 <th>NIP</th>
                 <th>Jabatan</th>
                 <th>Email</th>
+                <th>Username</th>
                 <th>Role</th>
                 <th>Status</th>
                 <th>Actions</th>
