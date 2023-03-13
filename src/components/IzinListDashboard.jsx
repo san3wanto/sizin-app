@@ -273,12 +273,8 @@ const IzinList = () => {
                   {usersAd.map((user) => (
                     <tr key={user.uuid}>
                       <td>
-                        <Row>
-                          <Col>{user.name}</Col>
-                        </Row>
-                        <Row>
-                          <Col>{user.jab}</Col>
-                        </Row>
+                        <Row>{user.name}</Row>
+                        <Row>{user.jab}</Row>
                         {/* <Accordion flush>
                           {user.name}
                           <Accordion.Item eventKey="0">

@@ -216,12 +216,8 @@ const Login = () => {
                       {usersAd.map((user) => (
                         <tr key={user.uuid}>
                           <td>
-                            <Row>
-                              <Col>{user.name}</Col>
-                            </Row>
-                            <Row>
-                              <Col>{user.jab}</Col>
-                            </Row>
+                            <Row>{user.name}</Row>
+                            <Row>{user.jab}</Row>
                             {/* <Accordion flush>
                               <Accordion.Item eventKey="0">
                                 <Accordion.Header>{user.name}</Accordion.Header>
