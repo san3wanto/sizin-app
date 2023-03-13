@@ -90,8 +90,8 @@ const IzinList = () => {
     setLoading(false);
   };
 
-  console.log(usersAd);
-  console.log(usersAd[0].izinData[usersAd[0].izinData.length]);
+  // console.log(usersAd);
+  // console.log(usersAd[0].izinData[usersAd[0].izinData.length]);
   // console.log(usersTd);
   // console.log(`Ini adalah ${user}`);
   // console.log(`Ini adalah ${izin}`);
@@ -289,6 +289,7 @@ const IzinList = () => {
                                   <strong>Selesai</strong>
                                 </Col>
                                 <Col>{`${dayjs(user.izinData[0].updatedAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
+                                {console.log(user.izinData[user.izinData.length])}
                               </Row>
                             </Accordion.Body>
                           </Accordion.Item>
