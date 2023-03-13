@@ -40,7 +40,7 @@ const NavB = () => {
               Riwayat Izin
             </Link>
             <NavDropdown title={`${user && user.name} (${user && user.role})`} id="collasible-nav-dropdown" className="d-flex flex-column align-items-center rounded mx-2 p-1 bg-white">
-              <NavDropdown.Item className="d-flex flex-column align-items-center" style={{ backgroundColor: "red", color: "white" }} onClick={logout}>
+              <NavDropdown.Item className="d-flex flex-column align-items-center" style={{ backgroundColor: "white", color: "red" }} onClick={logout}>
                 Logout
               </NavDropdown.Item>
             </NavDropdown>

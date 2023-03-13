@@ -47,7 +47,7 @@ const IzinList = () => {
                 <th>No</th>
                 <th>Keterangan Izin</th>
                 <th>Dibuat</th>
-                <th>Waktu </th>
+                <th>Selesai</th>
                 <th>Status</th>
               </tr>
             </thead>

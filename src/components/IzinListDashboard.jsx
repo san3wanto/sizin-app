@@ -281,7 +281,7 @@ const IzinList = () => {
                                 <Col classname="bg-secondary">
                                   <strong>Riwayat</strong>
                                 </Col>
-                                <Col classname="bg-secondary">{user.izinData[0].ket}</Col>
+                                <Col classname="bg-secondary">{user.izinData[user.izinData.length - 1].ket}</Col>
                               </Row>
                               <hr></hr>
                               <Row>

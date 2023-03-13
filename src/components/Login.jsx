@@ -222,16 +222,16 @@ const Login = () => {
                                 <Accordion.Body>
                                   <Row>
                                     <Col>
-                                      <strong>Izin Terakhir</strong>
+                                      <strong>Riwayat</strong>
                                     </Col>
-                                    <Col>{user.izinData[0].ket}</Col>
+                                    <Col>{user.izinData[user.izinData.length - 1].ket}</Col>
                                   </Row>
                                   <hr></hr>
                                   <Row>
                                     <Col>
                                       <strong>Selesai</strong>
                                     </Col>
-                                    <Col>{`${dayjs(user.izinData[0].updatedAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
+                                    <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
                                   </Row>
                                 </Accordion.Body>
                               </Accordion.Item>
