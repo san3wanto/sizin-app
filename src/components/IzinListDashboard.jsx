@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Container, Table, Button, Badge, Modal, Spinner, Alert } from "react-bootstrap";
+import { Container, Table, Button, Badge, Modal, Spinner, Alert, Accordion } from "react-bootstrap";
 import "bootstrap";
 
 const dayjs = require("dayjs");
@@ -122,45 +122,52 @@ const IzinList = () => {
           <div className="d-flex flex-column align-items-center mt-3">
             <h2>Riwayat Izin</h2>
           </div>
-          <div className="mx-2">
-            {izin.length !== 0 ? (
-              <Table responsive striped="columns" bordered>
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    {user && user.role === "admin" && <th>Nama</th>}
-                    <th>Keterangan Izin</th>
-                    <th>Dibuat</th>
-                    <th>Waktu </th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {izin.map((izin, index) => (
-                    <tr key={izin.uuid}>
-                      <td datalabel=" ">{index + 1}</td>
-                      {user && user.role === "admin" && <td>{izin.user.name}</td>}
-                      <td datalabel="Keterangan Izin" className="text-break">
-                        {izin.ket}
-                      </td>
-                      <td datalabel="Tanggal Dibuat">{`${dayjs(izin.createdAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
-                      <td datalabel="Waktu Dibuat">{`${dayjs(izin.updatedAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
-                      <td datalabel="Status Izin">{izin.status}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            ) : loading === true ? (
-              <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
-                <Spinner animation="border" variant="secondary" />
-                Memuat Data...
-              </Alert>
-            ) : (
-              <Alert variant="warning" className="d-flex flex-row justify-content-center align-items-center">
-                Belum Ada Ada Data Izin
-              </Alert>
-            )}
-          </div>
+          <Accordion flush>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>Riwayat Izin</Accordion.Header>
+              <Accordion.Body>
+                <div className="mx-2">
+                  {izin.length !== 0 ? (
+                    <Table responsive striped="columns" bordered>
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          {user && user.role === "admin" && <th>Nama</th>}
+                          <th>Keterangan Izin</th>
+                          <th>Dibuat</th>
+                          <th>Waktu </th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {izin.map((izin, index) => (
+                          <tr key={izin.uuid}>
+                            <td datalabel=" ">{index + 1}</td>
+                            {user && user.role === "admin" && <td>{izin.user.name}</td>}
+                            <td datalabel="Keterangan Izin" className="text-break">
+                              {izin.ket}
+                            </td>
+                            <td datalabel="Tanggal Dibuat">{`${dayjs(izin.createdAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
+                            <td datalabel="Waktu Dibuat">{`${dayjs(izin.updatedAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
+                            <td datalabel="Status Izin">{izin.status}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </Table>
+                  ) : loading === true ? (
+                    <Alert variant="light" className="d-flex flex-row justify-content-center align-items-center">
+                      <Spinner animation="border" variant="secondary" />
+                      Memuat Data...
+                    </Alert>
+                  ) : (
+                    <Alert variant="warning" className="d-flex flex-row justify-content-center align-items-center">
+                      Belum Ada Ada Data Izin
+                    </Alert>
+                  )}
+                </div>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
         </div>
       )}
 
