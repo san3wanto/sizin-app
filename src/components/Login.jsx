@@ -178,7 +178,7 @@ const Login = () => {
                                     <Col>
                                       <strong>Dibuat</strong>
                                     </Col>
-                                    <Col>{`${dayjs(user.izinData[0].createdAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col>
+                                    <Col>{`${dayjs(user.izinData[0].createdAt).format("HH:mm - dddd, DD-MM-YYYY")}`}</Col>
                                   </Row>
                                 </Accordion.Body>
                               </Accordion.Item>
@@ -216,11 +216,7 @@ const Login = () => {
                       {usersAd.map((user) => (
                         <tr key={user.uuid}>
                           <td>
-                            <Row>
-                              <Col>{user.name}</Col>
-                              <Col>{user.jab}</Col>
-                            </Row>
-                            {/* <Accordion flush>
+                            <Accordion flush>
                               <Accordion.Item eventKey="0">
                                 <Accordion.Header>{user.name}</Accordion.Header>
                                 <Accordion.Body>
@@ -228,18 +224,19 @@ const Login = () => {
                                     <Col>
                                       <strong>Riwayat</strong>
                                     </Col>
-                                    <Col>{user.izinData[user.izinData.length - 1].ket}</Col>
+                                    <Col>{!user.izinData[user.izinData.length - 1] ? "Tidak Ada" : `${user.izinData[user.izinData.length - 1].ket}`}</Col>
                                   </Row>
                                   <hr></hr>
                                   <Row>
                                     <Col>
                                       <strong>Selesai</strong>
                                     </Col>
+                                    <Col>{!user.izinData[user.izinData.length - 1] ? "Tidak Ada" : `${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col>
                                     <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col>
                                   </Row>
                                 </Accordion.Body>
                               </Accordion.Item>
-                            </Accordion> */}
+                            </Accordion>
                           </td>
                         </tr>
                       ))}
