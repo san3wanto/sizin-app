@@ -216,10 +216,16 @@ const Login = () => {
                       {usersAd.map((user) => (
                         <tr key={user.uuid}>
                           <td>
-                            <Accordion flush>
+                            <Row>
+                              <Col>{user.name}</Col>
+                            </Row>
+                            <Row>
+                              <Col>{user.jab}</Col>
+                            </Row>
+                            {/* <Accordion flush>
                               <Accordion.Item eventKey="0">
                                 <Accordion.Header>{user.name}</Accordion.Header>
-                                {/* <Accordion.Body>
+                                <Accordion.Body>
                                   <Row>
                                     <Col>
                                       <strong>Riwayat</strong>
@@ -233,9 +239,9 @@ const Login = () => {
                                     </Col>
                                     <Col>{`${dayjs(user.izinData[user.izinData.length - 1].updatedAt).format("HH:mm - dddd, DD MM YYYY")}`}</Col>
                                   </Row>
-                                </Accordion.Body> */}
+                                </Accordion.Body>
                               </Accordion.Item>
-                            </Accordion>
+                            </Accordion> */}
                           </td>
                         </tr>
                       ))}

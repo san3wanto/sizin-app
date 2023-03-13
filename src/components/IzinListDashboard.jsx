@@ -273,9 +273,15 @@ const IzinList = () => {
                   {usersAd.map((user) => (
                     <tr key={user.uuid}>
                       <td>
-                        <Accordion flush>
+                        <Row>
+                          <Col>{user.name}</Col>
+                        </Row>
+                        <Row>
+                          <Col>{user.jab}</Col>
+                        </Row>
+                        {/* <Accordion flush>
                           {user.name}
-                          {/* <Accordion.Item eventKey="0">
+                          <Accordion.Item eventKey="0">
                             <Accordion.Header>{user.name}</Accordion.Header>
                             <Accordion.Body>
                               <Row classname="bg-secondary">
@@ -293,8 +299,8 @@ const IzinList = () => {
                                 {console.log(user.izinData[user.izinData.length - 1])}
                               </Row>
                             </Accordion.Body>
-                          </Accordion.Item> */}
-                        </Accordion>
+                          </Accordion.Item>
+                        </Accordion> */}
                       </td>
                     </tr>
                   ))}
