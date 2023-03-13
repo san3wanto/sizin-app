@@ -68,13 +68,13 @@ const IzinList = () => {
   };
 
   //filter kehadiran
-  function filterByStatus(user, status, role) {
-    return user.filter(function (user) {
-      return user.status.includes(status) && user.role.includes(role);
-    });
-  }
-  const Tersedia = filterByStatus(users, "Tersedia", "user");
-  const Izin = filterByStatus(users, "Izin", "user");
+  // function filterByStatus(user, status, role) {
+  //   return user.filter(function (user) {
+  //     return user.status.includes(status) && user.role.includes(role);
+  //   });
+  // }
+  // const Tersedia = filterByStatus(users, "Tersedia", "user");
+  // const Izin = filterByStatus(users, "Izin", "user");
   // console.log(Izin.length);
   //
 
@@ -143,7 +143,7 @@ const IzinList = () => {
 
       <div>
         <div className="d-flex flex-row justify-content-around flex-wrap">
-          <div className="card m-3 p-3" style={{ width: "30rem" }}>
+          {/* <div className="card m-3 p-3" style={{ width: "30rem" }}>
             <div className="d-flex flex-row justify-content-between align-items-end">
               <h2>Sedang Di Kantor</h2>
               <h5>
@@ -169,9 +169,9 @@ const IzinList = () => {
                 ))}
               </tbody>
             </Table>
-          </div>
+          </div> */}
 
-          <div className="m-3 p-3 card" style={{ width: "30rem" }}>
+          {/* <div className="m-3 p-3 card" style={{ width: "30rem" }}>
             <div className="d-flex flex-row justify-content-between align-items-end">
               <h2>Sedang Izin</h2>
               <h5>
@@ -197,7 +197,7 @@ const IzinList = () => {
                 ))}
               </tbody>
             </Table>
-          </div>
+          </div> */}
 
           <div className="m-3 p-3 card" style={{ width: "30rem" }}>
             <div className="d-flex flex-row justify-content-between align-items-end">
@@ -223,13 +223,13 @@ const IzinList = () => {
                                 <Col>
                                   <strong>Keterangan</strong>
                                 </Col>
-                                <Col>{user.izinData[0].ket}</Col>
+                                <Col>{user.izinData[izinData.length].ket}</Col>
                               </Row>
                               <Row>
                                 <Col>
                                   <strong>Dibuat</strong>
                                 </Col>
-                                <Col>{`${dayjs(user.izinData[0].createdAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
+                                <Col>{`${dayjs(user.izinData[izinData.length].createdAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
                               </Row>
                             </Accordion.Body>
                           </Accordion.Item>
@@ -273,15 +273,15 @@ const IzinList = () => {
                             <Accordion.Body>
                               <Row>
                                 <Col>
-                                  <strong>Izin Terakhir</strong>
+                                  <strong>Riwayat</strong>
                                 </Col>
-                                <Col>{user.izinData[0].ket}</Col>
+                                <Col>{user.izinData[izinData.length].ket}</Col>
                               </Row>
                               <Row>
                                 <Col>
                                   <strong>Selesai</strong>
                                 </Col>
-                                <Col>{`${dayjs(user.izinData[0].updatedAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
+                                <Col>{`${dayjs(user.izinData[izinData.length].updatedAt).format("dddd, DD MM YYYY - HH:mm")}`}</Col>
                               </Row>
                             </Accordion.Body>
                           </Accordion.Item>
