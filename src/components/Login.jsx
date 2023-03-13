@@ -167,12 +167,13 @@ const Login = () => {
                               <Accordion.Item eventKey="0">
                                 <Accordion.Header>{user.name}</Accordion.Header>
                                 <Accordion.Body>
-                                  <Row classname="bg-secondary">
-                                    <Col classname="bg-secondary">
+                                  <Row>
+                                    <Col>
                                       <strong>Keterangan</strong>
                                     </Col>
-                                    <Col classname="bg-secondary">{user.izinData[0].ket}</Col>
+                                    <Col>{user.izinData[0].ket}</Col>
                                   </Row>
+                                  <hr></hr>
                                   <Row>
                                     <Col>
                                       <strong>Dibuat</strong>
@@ -219,12 +220,13 @@ const Login = () => {
                               <Accordion.Item eventKey="0">
                                 <Accordion.Header>{user.name}</Accordion.Header>
                                 <Accordion.Body>
-                                  <Row classname="bg-secondary">
-                                    <Col classname="bg-secondary">
+                                  <Row>
+                                    <Col>
                                       <strong>Izin Terakhir</strong>
                                     </Col>
-                                    <Col classname="bg-secondary">{user.izinData[0].ket}</Col>
+                                    <Col>{user.izinData[0].ket}</Col>
                                   </Row>
+                                  <hr></hr>
                                   <Row>
                                     <Col>
                                       <strong>Selesai</strong>
