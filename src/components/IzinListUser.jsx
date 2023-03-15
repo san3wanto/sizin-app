@@ -47,7 +47,7 @@ const IzinList = () => {
                 <th>No</th>
                 <th>Keterangan Izin</th>
                 <th>Dibuat</th>
-                <th>Selesai</th>
+                <th>Diselesaikan</th>
                 <th>Status</th>
               </tr>
             </thead>
@@ -58,8 +58,8 @@ const IzinList = () => {
                   <td datalabel="Keterangan Izin" className="text-break">
                     {izin.ket}
                   </td>
-                  <td datalabel="Tanggal Dibuat">{`${dayjs(izin.createdAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
-                  <td datalabel="Waktu Dibuat">{`${dayjs(izin.updatedAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
+                  <td datalabel="Dibuat">{`${dayjs(izin.createdAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
+                  <td datalabel="Diselesaikan">{`${dayjs(izin.updatedAt).format("dddd, DD MMM YYYY - HH:mm")} WITA`}</td>
                   <td datalabel="Status">{izin.status}</td>
                 </tr>
               ))}
