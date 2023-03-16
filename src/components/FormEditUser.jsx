@@ -151,6 +151,7 @@ const FormEditUser = () => {
             {/* <p className="has-text-centered">Password Cocok</p> */}
             <Alert className="d-flex flex-column align-items-center justify-content-center mt-2 w-100" variant={psn === "Cek kembali data anda!" || "Password dan Confirm tidak cocok" ? "danger" : "light"}>
               {psn ? `${psn}` : "Masukkan Data Pegawai"}
+              {console.log(psn)}
             </Alert>
             {/* {console.log(`Passwordnya adalah ${password} dan confPasswordnya adalah ${confPassword}`)} */}
           </div>
