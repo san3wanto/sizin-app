@@ -49,7 +49,7 @@ const FormAddIzin = () => {
           <FloatingLabel controlId="floatingTextarea" label="Keterangan Izin" className="mb-3 w-100">
             <Form.Control as="textarea" className="input" value={ket} onChange={(e) => setKet(e.target.value)} placeholder="keterangan izin" />
           </FloatingLabel>
-          {loading === false && msg === "" ? (
+          {loading === false && !msg ? (
             <Button type="submit" onClick={() => updateUserStatus(user && user.uuid)} className="Button is-success w-100">
               Simpan
             </Button>
@@ -61,7 +61,7 @@ const FormAddIzin = () => {
             </Button>
           )}
           {/* <p className="has-text-centered">{msg}</p> */}
-          <Alert className="d-flex flex-column align-items-center justify-content-center mt-2 w-100" variant={msg ? "danger" : "Light"}>
+          <Alert className="d-flex flex-column align-items-center justify-content-center mt-2 w-100" variant={psn ? "danger" : "Light"}>
             {psn ? `${psn}` : "Masukkan keterangan izin"}
           </Alert>
         </Form>
