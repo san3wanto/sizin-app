@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Container, Button, Card, Form, FloatingLabel, Spinner } from "react-bootstrap";
+import { Container, Button, Card, Form, FloatingLabel, Spinner, Alert } from "react-bootstrap";
 import "bootstrap";
 
 const FormAddIzin = () => {
@@ -58,6 +58,9 @@ const FormAddIzin = () => {
             </Button>
           )}
           <p className="has-text-centered">{msg}</p>
+          <Alert className="d-flex flex-row justify-content-center" variant="danger">
+            {msg}
+          </Alert>
         </Form>
       </Card>
     </Container>
