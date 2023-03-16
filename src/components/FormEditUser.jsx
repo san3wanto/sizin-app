@@ -136,35 +136,24 @@ const FormEditUser = () => {
               <option value="user">User</option>
             </Form.Select>
           </Form.Group>
-
-          {password === confPassword && password && confPassword !== "" ? (
-            <div className="d-flex flex-column align-items-center justify-content-center">
-              {loading === false ? (
-                <Button variant="primary" type="submit" onClick={() => setMsg("")} className="d-flex w-100 justify-content-center mt-4">
-                  Simpan
-                </Button>
-              ) : (
-                <Button variant="primary" className="d-flex w-100 justify-content-center mt-4" disabled>
-                  <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
-                  {console.log(loading)}
-                  Memproses...
-                </Button>
-              )}
-              <p className="has-text-centered">Password Cocok</p>
-              <Alert className="d-flex flex-column align-items-center justify-content-center mt-2 w-100" variant={psn === "Cek kembali data anda!" ? "danger" : "Light"}>
-                {psn ? `${psn}` : "Masukkan Data Pegawai"}
-              </Alert>
-              {/* {console.log(`Passwordnya adalah ${password} dan confPasswordnya adalah ${confPassword}`)} */}
-            </div>
-          ) : (
-            <div className="d-flex flex-column align-items-center justify-content-center">
-              <Button variant="primary" type="button" className="d-flex w-100 justify-content-center mt-4" disabled>
+          <div className="d-flex flex-column align-items-center justify-content-center">
+            {loading === false ? (
+              <Button variant="primary" type="submit" onClick={() => setMsg("")} className="d-flex w-100 justify-content-center mt-4">
                 Simpan
               </Button>
-              <p className="has-text-centered">Password tidak cocok</p>
-              {/* {console.log(`Passwordnya adalah ${password} dan confPasswordnya adalah ${confPassword}`)} */}
-            </div>
-          )}
+            ) : (
+              <Button variant="primary" className="d-flex w-100 justify-content-center mt-4" disabled>
+                <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
+                {console.log(loading)}
+                Memproses...
+              </Button>
+            )}
+            {/* <p className="has-text-centered">Password Cocok</p> */}
+            <Alert className="d-flex flex-column align-items-center justify-content-center mt-2 w-100" variant={psn === "Cek kembali data anda!" ? "danger" : "Light"}>
+              {psn ? `${psn}` : "Masukkan Data Pegawai"}
+            </Alert>
+            {/* {console.log(`Passwordnya adalah ${password} dan confPasswordnya adalah ${confPassword}`)} */}
+          </div>
         </Form>
       </Card>
     </Container>
