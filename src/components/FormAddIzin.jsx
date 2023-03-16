@@ -61,7 +61,7 @@ const FormAddIzin = () => {
             </Button>
           )}
           {/* <p className="has-text-centered">{msg}</p> */}
-          <Alert className="d-flex flex-column align-items-center justify-content-center mt-2 w-100" variant={psn ? "danger" : "Light"}>
+          <Alert className="d-flex flex-column align-items-center justify-content-center mt-2 w-100" variant={psn === "Data yang anda masukkan salah" ? "danger" : "Light"}>
             {psn ? `${psn}` : "Masukkan keterangan izin"}
           </Alert>
         </Form>
