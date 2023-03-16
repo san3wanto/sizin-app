@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Container, Button, Card, Form, InputGroup } from "react-bootstrap";
+import { Container, Button, Card, Form, InputGroup, Alert, Spinner } from "react-bootstrap";
 import "bootstrap";
 
 const FormEditUser = () => {
@@ -15,6 +15,7 @@ const FormEditUser = () => {
   const [confPassword, setConfPassword] = useState([]);
   const [role, setRole] = useState("");
   const [msg, setMsg] = useState("");
+  const [psn, setPsn] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ const FormEditUser = () => {
 
   const updateUser = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await axios.patch(`https://sizin-server.herokuapp.com/users/${id}`, {
         name: name,
@@ -53,10 +55,13 @@ const FormEditUser = () => {
         role: role,
         username: username,
       });
+      setLoading(false);
       navigate("/users");
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
+        setPsn(error.response.data.msg);
+        setLoading(false);
       }
     }
   };
@@ -133,10 +138,21 @@ const FormEditUser = () => {
 
           {password === confPassword && password && confPassword !== "" ? (
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center mt-4">
-                Simpan
-              </Button>
+              {loading === false ? (
+                <Button variant="primary" type="submit" onClick={() => setMsg("")} className="d-flex w-100 justify-content-center mt-4">
+                  Simpan
+                </Button>
+              ) : (
+                <Button variant="primary" className="d-flex w-100 justify-content-center mt-4" disabled>
+                  <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
+                  {console.log(loading)}
+                  Memproses...
+                </Button>
+              )}
               <p className="has-text-centered">Password Cocok</p>
+              <Alert className="d-flex flex-column align-items-center justify-content-center mt-2 w-100" variant={psn === "Cek kembali data anda!" ? "danger" : "Light"}>
+                {psn ? `${psn}` : "Masukkan Data Pegawai"}
+              </Alert>
               {/* {console.log(`Passwordnya adalah ${password} dan confPasswordnya adalah ${confPassword}`)} */}
             </div>
           ) : (

@@ -123,7 +123,7 @@ const FormAddUser = () => {
               Memproses...
             </Button>
           )}
-          <p>{msg}</p>
+          {/* <p>{msg}</p> */}
           <Alert className="d-flex flex-column align-items-center justify-content-center mt-2 w-100" variant={psn === "Cek kembali data anda!" ? "danger" : "Light"}>
             {psn ? `${psn}` : "Masukkan Data Pegawai"}
           </Alert>
