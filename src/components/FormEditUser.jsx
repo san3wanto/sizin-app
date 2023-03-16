@@ -16,6 +16,7 @@ const FormEditUser = () => {
   const [role, setRole] = useState("");
   const [msg, setMsg] = useState("");
   const [psn, setPsn] = useState("");
+  const [loading, setLoading] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
