@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Container, Button, Card, Form, InputGroup, Spinner } from "react-bootstrap";
+import { Container, Button, Card, Form, InputGroup, Spinner, Alert } from "react-bootstrap";
 import "bootstrap";
 
 const FormAddUser = () => {
@@ -14,6 +14,7 @@ const FormAddUser = () => {
   const [confPassword, setConfPassword] = useState("");
   const [role, setRole] = useState("");
   const [msg, setMsg] = useState("");
+  const [psn, setPsn] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -37,6 +38,8 @@ const FormAddUser = () => {
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
+        setPsn(error.response.data.msg);
+        setLoading(false);
       }
     }
   };
@@ -52,7 +55,6 @@ const FormAddUser = () => {
       </div>
       <Card className="d-flex flex-column p-5" style={{ borderRadius: "1.2rem" }}>
         <Form onSubmit={saveUser}>
-          <p>{msg}</p>
           <Form.Group className="mb-3" controlId="formBasicNama">
             <Form.Label>Nama</Form.Label>
             <Form.Control size="md" type="text" placeholder="Masukkan Nama" value={name} onChange={(e) => setName(e.target.value)} />
@@ -110,8 +112,8 @@ const FormAddUser = () => {
               <option value="user">User</option>
             </Form.Select>
           </Form.Group>
-          {loading === false && !msg ? (
-            <Button variant="primary" type="submit" className="d-flex w-100 justify-content-center mt-4">
+          {loading === false ? (
+            <Button variant="primary" type="submit" onClick={() => setMsg("")} className="d-flex w-100 justify-content-center mt-4">
               Simpan
             </Button>
           ) : (
@@ -121,6 +123,10 @@ const FormAddUser = () => {
               Memproses...
             </Button>
           )}
+          <p>{msg}</p>
+          <Alert className="d-flex flex-column align-items-center justify-content-center mt-2 w-100" variant={psn === "Cek kembali data anda!" ? "danger" : "Light"}>
+            {psn ? `${psn}` : "Masukkan Data Pegawai"}
+          </Alert>
         </Form>
       </Card>
     </Container>
