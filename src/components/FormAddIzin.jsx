@@ -8,6 +8,7 @@ import "bootstrap";
 const FormAddIzin = () => {
   const [ket, setKet] = useState("");
   const [msg, setMsg] = useState("");
+  const [psn, setPsn] = useState("");
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
@@ -28,6 +29,7 @@ const FormAddIzin = () => {
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
+        setPsn(error.response.data.msg);
       }
     }
     setLoading(false);
@@ -60,7 +62,7 @@ const FormAddIzin = () => {
           )}
           {/* <p className="has-text-centered">{msg}</p> */}
           <Alert className="d-flex flex-column align-items-center justify-content-center mt-2 w-100" variant={msg ? "danger" : "Light"}>
-            {msg ? `${msg}` : "Masukkan keterangan izin"}
+            {psn ? `${psn}` : "Masukkan keterangan izin"}
           </Alert>
         </Form>
       </Card>
