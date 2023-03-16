@@ -51,16 +51,18 @@ const FormAddIzin = () => {
               Simpan
             </Button>
           ) : (
-            <Button variant="primary" className="d-flex w-100 justify-content-center mt-4" disabled>
-              <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
-              {console.log(loading)}
-              Memproses...
-            </Button>
+            <div>
+              <Button variant="primary" className="d-flex w-100 justify-content-center mt-4" disabled>
+                <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
+                {console.log(loading)}
+                Memproses...
+              </Button>
+              <Alert className="d-flex flex-row justify-content-center" variant="danger">
+                {`${msg}`}
+              </Alert>
+            </div>
           )}
-          <p className="has-text-centered">{msg}</p>
-          <Alert className="d-flex flex-row justify-content-center" variant="danger">
-            {msg}
-          </Alert>
+          {/* <p className="has-text-centered">{msg}</p> */}
         </Form>
       </Card>
     </Container>
