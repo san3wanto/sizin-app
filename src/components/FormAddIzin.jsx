@@ -31,6 +31,7 @@ const FormAddIzin = () => {
       }
     }
     setLoading(false);
+    setMsg("");
   };
 
   const updateUserStatus = async (userId) => {
@@ -46,7 +47,7 @@ const FormAddIzin = () => {
           <FloatingLabel controlId="floatingTextarea" label="Keterangan Izin" className="mb-3 w-100">
             <Form.Control as="textarea" className="input" value={ket} onChange={(e) => setKet(e.target.value)} placeholder="keterangan izin" />
           </FloatingLabel>
-          {loading === false && msg !== "Data yang anda masukkan salah" ? (
+          {loading === false && msg === "" ? (
             <Button type="submit" onClick={() => updateUserStatus(user && user.uuid)} className="Button is-success w-100">
               Simpan
             </Button>
